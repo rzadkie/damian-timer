@@ -19,8 +19,8 @@ export default function Timer (){
                 if (seconds > 0) {
                     setTimeout(() => setSeconds(seconds - 1), speed);
                     }
-                if (seconds == 0){
-                    if (minutes == 0){
+                if (seconds === 0){
+                    if (minutes === 0){
                         clearTimeout();
                         setSeconds(0);
                         setMinutes(0);
@@ -33,7 +33,7 @@ export default function Timer (){
         }
         //setSum((minutes / 60) + seconds);
         //console.log(sum);
-        }});
+        }}, [bloodyFuckingStupid, seconds, speed, minutes]);
 
         
 

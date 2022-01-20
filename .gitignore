@@ -24,5 +24,4 @@ yarn-debug.log*
 yarn-error.log*
 
 setupTests
-reportWebVitals
 *.test.js

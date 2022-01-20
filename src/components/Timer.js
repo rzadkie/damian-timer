@@ -15,7 +15,7 @@ export default function Timer (){
         useEffect(() => {
 
             if (bloodyFuckingStupid){
-                if (seconds > 0) {
+                if (seconds >= 0 || minutes === 1) {
                     setTimeout(() => setSeconds(seconds - 1), speed);
                     }
                 if (seconds === 0){
@@ -34,10 +34,19 @@ export default function Timer (){
         //console.log(sum);
         }}, [bloodyFuckingStupid, seconds, speed, minutes]);
 
+        const [init, setInit] = useState('');
+
+        useEffect(() => {
+            setInit((minutes * 60) + seconds);
+        }, [bld ])
+        
+        let progress = (min * 60) + sec;
+        let diff = progress / init;
+        
         
     return(
         <div className="Background">
-            <Torch min = {minutes} sec = {seconds} bld={bloodyFuckingStupid}/>
+            <Torch diff={diff}/>
         <div className="Background2">
         
         <div className="BTNsL">

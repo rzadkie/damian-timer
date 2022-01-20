@@ -12,7 +12,6 @@ export default function Timer (){
         const [minutes, setMinutes] = useState('');
         const [speed, setSpeed] = useState(1000);
         const [bloodyFuckingStupid, setBloodyFuckingStupid] = useState(false);
-
         useEffect(() => {
 
             if (bloodyFuckingStupid){
@@ -38,7 +37,7 @@ export default function Timer (){
         
     return(
         <div className="Background">
-            <Torch min = {minutes} sec = {seconds}/>
+            <Torch min = {minutes} sec = {seconds} bld={bloodyFuckingStupid}/>
         <div className="Background2">
         
         <div className="BTNsL">

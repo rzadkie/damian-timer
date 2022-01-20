@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import { ReactComponent as Frame} from '..//dmn.svg';
 import '../scss/Torch.scss';
 

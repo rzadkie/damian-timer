@@ -36,13 +36,6 @@ export default function Timer (){
         }}, [bloodyFuckingStupid, seconds, speed, minutes]);
 
         
-
-        const timeHandler = async (event) => {
-            event.preventDefault();
-
-
-        }
-        
     return(
         <div className="Background">
             <Torch min = {minutes} sec = {seconds}/>

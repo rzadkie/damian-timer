@@ -38,9 +38,9 @@ export default function Timer (){
 
         useEffect(() => {
             setInit((minutes * 60) + seconds);
-        }, [bld ])
+        }, [bloodyFuckingStupid ])
         
-        let progress = (min * 60) + sec;
+        let progress = (minutes * 60) + seconds;
         let diff = progress / init;
         
         

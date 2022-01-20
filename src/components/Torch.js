@@ -16,7 +16,7 @@ export default function Torch({min, sec, bld}){
     const barL = {
         width: `${diff * 40}` + 'rem'        
     };
-
+//hehe
     return(
         <div className="Torch">
             <Frame className="BarFrame" >

@@ -1,0 +1,83 @@
+@use './App.scss';
+
+@mixin Background {
+
+    display: flex;
+    max-height: 100%;
+    max-width: 100%;
+    padding: 0.25rem;
+    margin: 0.25rem;
+    background-color: App.$base-brown;
+    justify-content: center;
+    box-shadow: 
+    0 0 40px 10px App.$base-brown,
+    
+}
+
+.Button{
+    width: 10 + 6rem;
+    height: 3rem;
+    margin-top: 3vmax;
+    margin-bottom: 3vmax;
+
+
+}
+
+.Background{
+    @include Background;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.Background2{
+    @include Background;
+    flex-direction: row;
+}
+
+@mixin ButtonCollumn {
+    display: flex;
+    flex-direction: column;   
+    max-width: fit-content
+}
+
+.BTNsR{
+    @include ButtonCollumn;
+    margin-left: 5rem;
+}
+
+.BTNsL{
+    @include ButtonCollumn;
+    margin-right: 5rem;
+
+
+}
+
+.CenterPanel{
+    align-items: center;
+    //justify-content: center;
+    display: flex;
+    flex-direction: column;
+    width: 15rem;
+    .CenterCenterPanel{
+        background-color: App.$base-black;
+        border: 0.10rem solid App.$base-grey;
+    }
+    .TimeLabel{
+        display: flex;
+        flex-direction: row;
+    }
+    .TimeForm:focus {outline: none;
+    background: none;
+    }
+    .TimeForm{
+        
+        width: 4vw;
+        background: none;
+        border: none;
+        color: App.$base-grey;
+        text-align: center;
+        font-size: 2vmax;
+        cursor: text;
+    }
+}
+

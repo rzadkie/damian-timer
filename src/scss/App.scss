@@ -1,11 +1,10 @@
-.App {
-  text-align: center;
-}
+$base-brown: #150D02;
+$base-orange: #E65616;
+$base-red: #8F1B03;
+$light-red: #D33A13;
+$base-grey: #787878;
+$base-black: #090100;
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -13,13 +12,13 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
+.App {
+  text-align: center;
+  background-color: $base-black;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
 }

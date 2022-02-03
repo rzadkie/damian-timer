@@ -4,20 +4,19 @@
     flex-grow: 1;
     display: grid;
     align-items: center;
-    grid-template-rows: 2rem 2rem 2rem;
-    grid-template-columns: 4rem 4rem 4rem 4rem 4rem 4rem 4rem 4rem 4rem 4rem 4rem 4rem;
+    grid-template-rows: 2vw 2vw 2vw;
+    grid-template-columns: 4vw 4vw 4vw 4vw 4vw 4vw 4vw 4vw 4vw 4vw 4vw 4vw;
 
 }
 
 .LoadingBar{
-    width: 38rem;
+    width: 38vw;
     background: linear-gradient(90deg, App.$base-brown 0%, App.$base-red 35%, App.$light-red 50%, App.$base-red 65%, App.$base-brown 100%);
-    padding: 1rem;
+    padding: 1vw;
     z-index: 10;
     grid-row: 2 / 3;
     grid-column: 2 / 12;
-    transform: scaleX(1);
-    // box-shadow: 
+        // box-shadow: 
     // 0 2px 20px 5px App.$base-red,
     // 0 0 100px 10px App.$base-brown,
     // 0 0 140px 15px App.$base-black
@@ -26,7 +25,7 @@
 }
 
 .BarFrame{
-    width: 40rem;
+    width: 40vw;
     grid-row: 2 / 3;
     grid-column: 2 / 6;
     z-index: 20;

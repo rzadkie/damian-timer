@@ -5,11 +5,9 @@ import '../scss/Torch.scss';
 
 export default function Torch({diff}){
 
-    console.log(diff);
     const barL = {
-        width: `${diff * 40}` + 'rem'        
+        transform: `scaleX(${diff})`
     };
-//hehe
     return(
         <div className="Torch">
             <Frame className="BarFrame" >

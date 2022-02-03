@@ -8,58 +8,92 @@ export default function Timer (){
 
 
 
-        const [seconds, setSeconds] = useState('');
-        const [minutes, setMinutes] = useState('');
+        const [seconds, setSeconds] = useState('0');
+        const [minutes, setMinutes] = useState('0');
         const [speed, setSpeed] = useState(1000);
         const [bloodyFuckingStupid, setBloodyFuckingStupid] = useState(false);
+        const [isRunning, setIsRunning] = useState(0);
+        const storage = window.localStorage
         useEffect(() => {
 
             if (bloodyFuckingStupid){
-                if (seconds >= 0 || minutes === 1) {
-                    setTimeout(() => setSeconds(seconds - 1), speed);
+                if (seconds === 0 && minutes > 0){
+                    setMinutes(minutes - 1);
+                    setSeconds(59);
+                }
+                if (seconds > 0 || minutes > 0){
+                        setTimeout(() => setSeconds(seconds - 1), speed)
+
+
+                        if (seconds === 0 && minutes === 0){
+                            clearTimeout();
+                            setSeconds(0);
+                            setMinutes(0);                          
+                        }
                     }
-                if (seconds === 0){
-                    if (minutes === 0){
-                        clearTimeout();
-                        setSeconds(0);
-                        setMinutes(0);
-                    }
-                    
-                    else {
-                        setSeconds(59);
-                        setMinutes(minutes - 1);
-                    }
-        }
-        //setSum((minutes / 60) + seconds);
-        //console.log(sum);
+
+
         }}, [bloodyFuckingStupid, seconds, speed, minutes]);
 
         const [init, setInit] = useState('');
 
         useEffect(() => {
-            setInit((minutes * 60) + seconds);
-        }, [bloodyFuckingStupid ])
+            setInit(((minutes * 60) * 60) + (seconds * 60));
+        }, [bloodyFuckingStupid])
         
-        let progress = (minutes * 60) + seconds;
-        let diff = progress / init;
+        const timeDiff = () =>{
+            setBloodyFuckingStupid(true);
+            storage.setItem('time', init);
+
+        }
+        const initialTime = storage.getItem('time');
+        let progress = ((minutes * 60) * 60) + (seconds * 60);
+        let diff = progress / initialTime ;
         
         
+        const [light, setLight] = useState('');
+        const typesOfLight = ['Radiant Light', 'Dim Light', 'Shadowy Glow', 'Dark' ,'Pitch Black'];
+        
+        useEffect(() => {
+                                
+        if(diff >= 0.76)
+        setLight(typesOfLight[0]);
+        if(diff >= 0.51 && diff <= 0.75)
+        setLight(typesOfLight[1]);
+        if(diff >= 0.26 && diff <= 0.50)
+        setLight(typesOfLight[2]);
+        if(diff >= 0.01 && diff <= 0.25)
+        setLight(typesOfLight[3]);
+        if(diff === 0)
+        setLight(typesOfLight[4]);
+        });
+
+        const [name, setName] = useState('Pause');
+
     return(
         <div className="Background">
             <Torch diff={diff}/>
         <div className="Background2">
         
         <div className="BTNsL">
-        <button className="Button" onClick={() => setSpeed(500)}> 200% </button>
-        <button className="Button"onClick={() =>{ setSpeed(2000)}} > 50% </button>
-        <button className="Button" onClick={() => { if(bloodyFuckingStupid){
+        <button className="BigButton" onClick={() => setSpeed(500)}> 200% </button>
+        <button className="BigButton"onClick={() =>{ setSpeed(2000)}} > 50% </button>
+        <button className="BigButton" onClick={() => { if(bloodyFuckingStupid){
              setBloodyFuckingStupid(false);
-        }}} > Pause </button>
+             setName('Start')
+
+        }
+        else{
+            setBloodyFuckingStupid(true);
+            setName('Pause')
+
+        }
+        }} > {name} </button>
         </div>
 
         <div className="CenterPanel">
             <div className="CenterCenterPanel">
-                <p >radiant light for:</p>
+                <p>{light}</p>
                 <p> {minutes} {seconds} </p>
             </div>
 
@@ -77,16 +111,18 @@ export default function Timer (){
             </div>
             
             </label>
-            <button type="submit">reset</button>
+            <button type="submit" onClick={() => storage.clear()}>reset</button>
             </form>
         </div>
 
         <div className="BTNsR">
-        <button className="Button" onClick={() => [setSpeed(1000)]}> 100% </button>
-        <button className="Button" onClick={() =>{ setSpeed(2500)}} > 25% </button>
-        <button className="Button" onClick={() => { if(!bloodyFuckingStupid){
-             setBloodyFuckingStupid(true);
-        }}} >Start </button>
+        <button className="BigButton" onClick={() => setSpeed(1000) }> 100% </button>
+        <button className="BigButton" onClick={() =>{ setSpeed(2500)}} > 25% </button>
+        <button className="BigButton" disabled={isRunning === 2} onClick={() =>{ 
+            timeDiff();
+            setIsRunning(isRunning + 1);
+        }}
+        >Begin </button>
         </div>
 
         </div>

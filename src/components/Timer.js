@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 
 
 
+
 export default function Timer (){
 
 
@@ -111,7 +112,9 @@ export default function Timer (){
             </div>
             
             </label>
-            <button type="submit" onClick={() => storage.clear()}>reset</button>
+
+            <button type="submit" onClick={() => storage.clear()}> reset  
+            </button>
             </form>
         </div>
 

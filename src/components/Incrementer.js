@@ -22,8 +22,32 @@ export default function Incrementer(){
         const hard = [-100, -25, -5, -1, 25];
         const extreme = [-100, -25, -6, -1, 25];
         const imposible = [-100, -25, -7, -1, 25];
+        
+        let stop = false;
+        let stopHundred = false;
+
 
         
+        useEffect(() => {
+          
+        if(value >= 100){
+          stopHundred = true;
+          setValue(100)
+        }
+        else
+          stopHundred = false;
+
+        if(value <= 0){
+          stop = true;
+          setValue(0)
+
+        }
+        else
+        stop = false;
+        })
+
+
+
         useEffect(() => {
                                 
         if(value >= 76)
@@ -97,11 +121,11 @@ export default function Incrementer(){
         </div>
 
         <div className="BTNsR">
-        <button className="BigButtonAlt" onClick={() => setValue(value + diff[1])}> {diff[1]} </button>
-        <button className="BigButtonAlt" onClick={() => setValue(value + diff[4])}> {diff[4]} </button>
-        <button className="BigButtonAlt" onClick={() => setValue(value + diff[2])}> {diff[2]} </button>
-        <button className="BigButtonAlt"onClick={() => setValue(value + diff[3])}> {diff[3]} </button>
-        <button className="BigButtonAlt" onClick={() => setValue(value + diff[0])}> {diff[0]} </button>
+        <button className="BigButtonAlt" disabled={stopHundred} onClick={() => setValue(value + diff[4])}> {diff[4]} </button>
+        <button className="BigButtonAlt" disabled={stop} onClick={() => setValue(value + diff[3])}> {diff[3]} </button>
+        <button className="BigButtonAlt" disabled={stop} onClick={() => setValue(value + diff[2])}> {diff[2]} </button>
+        <button className="BigButtonAlt" disabled={stop} onClick={() => setValue(value + diff[1])}> {diff[1]} </button>
+        <button className="BigButtonAlt" disabled={stop} onClick={() => setValue(value + diff[0])}> {diff[0]} </button>
 
 
         </div>

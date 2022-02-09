@@ -15,7 +15,7 @@ $base-black: #090100;
 
 .App {
 
-
+  overflow: hidden;
   text-align: center;
   background-color: $base-black;
   min-height: 100vh;

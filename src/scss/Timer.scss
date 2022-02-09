@@ -14,13 +14,27 @@
     
 }
 
-.BigButton{
+%Button{
     width: calc(30px + 6vw);
     height: 3vw;
     margin-top: 3vmax;
     margin-bottom: 3vmax;
+}
+
+.BigButton{
+    @extend %Button;
+
+}
+.BigButtonAlt{
+    @extend %Button;
+    margin-top: 1vmax;
+    margin-bottom: 1vmax    ;
+}
 
 
+.DiffButton{
+    width: calc(30px + 6vw);
+    height: 3vw;
 }
 
 .Background{

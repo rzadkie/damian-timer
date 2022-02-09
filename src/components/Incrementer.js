@@ -13,7 +13,8 @@ export default function Incrementer(){
         const [amount, setAmount] = useState(10);
         const [diffLevel, setDiffLevel] = useState('Normal');
 
-        
+        const expValue = value / 100;
+
         const [light, setLight] = useState('');
         const typesOfLight = ['Radiant Light', 'Dim Light', 'Shadowy Glow', 'Dark' ,'Pitch Black'];
         const difficulty = ['Normal', 'Hard', 'Extreme 💀', 'ℑ𝔪𝔭𝔬𝔰𝔰𝔦𝔟𝔩𝔢👀'];
@@ -37,16 +38,33 @@ export default function Incrementer(){
         setLight(typesOfLight[4]);
         });
 
+        let diff;
+        switch(diffLevel){
+          case difficulty[0]: 
+              diff = normal;
+            break;
+          case difficulty[1]: 
+              diff = hard;
+            break;
+          case difficulty[2]: 
+              diff = extreme;
+            break;
+          case difficulty[3]: 
+              diff = imposible;
+          break;
+          
+        }
+
 
     return(
         <div className="Background">
-            <Torch diff={value}/>
+            <Torch diff={expValue}/>
         <div className="Background2">
         
         <div className="BTNsL">
         {difficulty.map(type => (
         <button
-        className='SmallButton'
+        className='DiffButton'
         key={type}
         active={diffLevel === type}
         onClick={() => setDiffLevel(type)}
@@ -63,9 +81,6 @@ export default function Incrementer(){
           'Incrementer': <Incrementer/>
         }[isActive]
       }   */}
-        <button className="BigButton" onClick={() => setValue(value - 4)}> + {amount} </button>
-        <button className="BigButton"onClick={() =>{ setAmount(2000)}} > + {amount} </button>
-        <button className="BigButton" onClick={() => setAmount(500)}> + {amount} </button>
 
 
 
@@ -82,10 +97,13 @@ export default function Incrementer(){
         </div>
 
         <div className="BTNsR">
-        <button className="BigButton" onClick={() => setAmount(1000) }> 100% </button>
-        <button className="BigButton" onClick={() =>{ setAmount(2500)}} > 25% </button>
-        <button className="BigButton" 
-        >Begin </button>
+        <button className="BigButtonAlt" onClick={() => setValue(value + diff[1])}> {diff[1]} </button>
+        <button className="BigButtonAlt" onClick={() => setValue(value + diff[4])}> {diff[4]} </button>
+        <button className="BigButtonAlt" onClick={() => setValue(value + diff[2])}> {diff[2]} </button>
+        <button className="BigButtonAlt"onClick={() => setValue(value + diff[3])}> {diff[3]} </button>
+        <button className="BigButtonAlt" onClick={() => setValue(value + diff[0])}> {diff[0]} </button>
+
+
         </div>
 
         </div>

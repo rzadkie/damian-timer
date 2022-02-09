@@ -61,6 +61,8 @@
     .CenterCenterPanel{
         background-color: App.$base-black;
         border: 0.10vw solid App.$base-grey;
+        width: 20vh;
+        height: 20vh;
     }
     .TimeLabel{
         display: flex;

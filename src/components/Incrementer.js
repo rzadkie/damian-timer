@@ -56,6 +56,7 @@ export default function Incrementer(){
         setLight(data.typeOfLight[4]);
         });
 
+        //works?
     return(
         <div className="Background">
             <Torch diff={expValue}/>

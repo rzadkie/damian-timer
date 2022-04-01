@@ -1,6 +1,7 @@
 import '../scss/Timer.scss';
 import Torch from './Torch';
 import React, { useState, useEffect } from "react";
+import data from './data.json';
 
 
 
@@ -9,19 +10,12 @@ export default function Incrementer(){
 
 
         const [value, setValue] = useState(100);
-        const [minutes, setMinutes] = useState('0');
-        const [amount, setAmount] = useState(10);
-        const [diffLevel, setDiffLevel] = useState('Normal');
+        const [diffLevel, setDiffLevel] = useState(data.difficulty[0]);
 
         const expValue = value / 100;
 
         const [light, setLight] = useState('');
-        const typesOfLight = ['Radiant Light', 'Dim Light', 'Shadowy Glow', 'Dark' ,'Pitch Black'];
-        const difficulty = ['Normal', 'Hard', 'Extreme 💀', 'ℑ𝔪𝔭𝔬𝔰𝔰𝔦𝔟𝔩𝔢👀'];
-        const normal = [-100, -25, -4, -1, 25];
-        const hard = [-100, -25, -5, -1, 25];
-        const extreme = [-100, -25, -6, -1, 25];
-        const imposible = [-100, -25, -7, -1, 25];
+
         
         let stop = false;
         let stopHundred = false;
@@ -51,34 +45,16 @@ export default function Incrementer(){
         useEffect(() => {
                                 
         if(value >= 76)
-        setLight(typesOfLight[0]);
+        setLight(data.typeOfLight[0]);
         if(value >= 51 && value <= 75)
-        setLight(typesOfLight[1]);
+        setLight(data.typeOfLight[1]);
         if(value >= 26 && value <= 50)
-        setLight(typesOfLight[2]);
+        setLight(data.typeOfLight[2]);
         if(value >= 1 && value <= 25)
-        setLight(typesOfLight[3]);
+        setLight(data.typeOfLight[3]);
         if(value === 0) 
-        setLight(typesOfLight[4]);
+        setLight(data.typeOfLight[4]);
         });
-
-        let diff;
-        switch(diffLevel){
-          case difficulty[0]: 
-              diff = normal;
-            break;
-          case difficulty[1]: 
-              diff = hard;
-            break;
-          case difficulty[2]: 
-              diff = extreme;
-            break;
-          case difficulty[3]: 
-              diff = imposible;
-          break;
-          
-        }
-
 
     return(
         <div className="Background">
@@ -86,30 +62,22 @@ export default function Incrementer(){
         <div className="Background2">
         
         <div className="BTNsL">
-        {difficulty.map(type => (
+        {Object.entries(data.difficulty).map(type => (
         <button
         className='DiffButton'
         key={type}
-        active={diffLevel === type}
-        onClick={() => setDiffLevel(type)}
+        active={data.difficulty === type} 
+        onClick={() => {
+          setDiffLevel(type[1]);
+        }}
           >
-            {type}
+            {type[1].name}
           </button>
         ))}
       </div>
 
-      {/* {
-        {
-          'Timer': <Timer/>,
-          'Soundboard': <Soundboard/>,
-          'Incrementer': <Incrementer/>
-        }[isActive]
-      }   */}
-
-
-
         <div className="CenterPanel">
-            <div className="CenterCenterPanel">
+            <div className="InfoDisplay">
                 <p>{light}</p>
                 <p> {value} </p>
             </div>
@@ -121,11 +89,11 @@ export default function Incrementer(){
         </div>
 
         <div className="BTNsR">
-        <button className="BigButtonAlt" disabled={stopHundred} onClick={() => setValue(value + diff[4])}> {diff[4]} </button>
-        <button className="BigButtonAlt" disabled={stop} onClick={() => setValue(value + diff[3])}> {diff[3]} </button>
-        <button className="BigButtonAlt" disabled={stop} onClick={() => setValue(value + diff[2])}> {diff[2]} </button>
-        <button className="BigButtonAlt" disabled={stop} onClick={() => setValue(value + diff[1])}> {diff[1]} </button>
-        <button className="BigButtonAlt" disabled={stop} onClick={() => setValue(value + diff[0])}> {diff[0]} </button>
+        <button className="BigButtonAlt" disabled={stopHundred} onClick={() => setValue(value + diffLevel.value[0])}> {diffLevel.value[0]} </button>
+        <button className="BigButtonAlt" disabled={stop} onClick={() => setValue(value + diffLevel.value[1])}> {diffLevel.value[1]} </button>
+        <button className="BigButtonAlt" disabled={stop} onClick={() => setValue(value + diffLevel.value[2])}> {diffLevel.value[2]} </button>
+        <button className="BigButtonAlt" disabled={stop} onClick={() => setValue(value + diffLevel.value[3])}> {diffLevel.value[3]} </button>
+        <button className="BigButtonAlt" disabled={stop} onClick={() => setValue(value + diffLevel.value[4])}> {diffLevel.value[4]} </button>
 
 
         </div>

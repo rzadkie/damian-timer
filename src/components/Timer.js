@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 //import BtnSvg from './button';
 //import Engine1 from './animation-player';
 //import { Engine } from './enigne-new';
-import './fire.png';
+// /import './fire.png';
 import data from './data.json'
 
 

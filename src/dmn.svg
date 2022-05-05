@@ -3,26 +3,26 @@
 <svg version="1.1" id="Warstwa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 1000 140" style="enable-background:new 0 0 1000 140;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill-rule:evenodd;clip-rule:evenodd;}
+	.spike{fill-rule:evenodd;clip-rule:evenodd;}
 </style>
 <g>
 	<path d="M0,47.14c41.67-1.25,83.33-2.14,125-3.02l125,0.02h250h250h125l62.5,1.43l31.25,0.72l31.25,0.85l-31.25,0.85l-31.25,0.72
 		L875,50.14H750H500H250l-125,0.02C83.33,49.28,41.67,48.39,0,47.14z"/>
 </g>
-<polygon class="st0" points="432.09,32.86 428.75,44.64 435.42,44.64 "/>
-<polygon class="st0" points="215.67,32.86 212.33,44.64 219,44.64 "/>
-<polygon class="st0" points="324.07,32.86 320.74,44.64 327.41,44.64 "/>
-<polygon class="st0" points="792.01,32.86 788.68,44.64 795.34,44.64 "/>
-<polygon class="st0" points="576.1,32.86 572.77,44.64 579.44,44.64 "/>
-<polygon class="st0" points="684.01,32.86 680.68,44.64 687.34,44.64 "/>
+<polygon class="spike" points="432.09,32.86 428.75,44.64 435.42,44.64 "/>
+<polygon class="spike" points="215.67,32.86 212.33,44.64 219,44.64 "/>
+<polygon class="spike" points="324.07,32.86 320.74,44.64 327.41,44.64 "/>
+<polygon class="spike" points="792.01,32.86 788.68,44.64 795.34,44.64 "/>
+<polygon class="spike" points="576.1,32.86 572.77,44.64 579.44,44.64 "/>
+<polygon class="spike" points="684.01,32.86 680.68,44.64 687.34,44.64 "/>
 <g>
 	<path d="M0,92.86c41.67-1.25,83.33-2.14,125-3.02l125,0.02h250h250l125,0l62.5,1.43l31.25,0.72l31.25,0.85l-31.25,0.85l-31.25,0.72
 		L875,95.86H750H500H250l-125,0.02C83.33,95,41.67,94.11,0,92.86z"/>
 </g>
-<polygon class="st0" points="432.09,107.14 428.75,95.36 435.42,95.36 "/>
-<polygon class="st0" points="215.67,107.14 212.33,95.36 219,95.36 "/>
-<polygon class="st0" points="324.07,107.14 320.74,95.36 327.41,95.36 "/>
-<polygon class="st0" points="792.01,107.14 788.68,95.36 795.34,95.36 "/>
-<polygon class="st0" points="576.1,107.14 572.77,95.36 579.44,95.36 "/>
-<polygon class="st0" points="684.01,107.14 680.68,95.36 687.34,95.36 "/>
+<polygon class="spike" points="432.09,107.14 428.75,95.36 435.42,95.36 "/>
+<polygon class="spike" points="215.67,107.14 212.33,95.36 219,95.36 "/>
+<polygon class="spike" points="324.07,107.14 320.74,95.36 327.41,95.36 "/>
+<polygon class="spike" points="792.01,107.14 788.68,95.36 795.34,95.36 "/>
+<polygon class="spike" points="576.1,107.14 572.77,95.36 579.44,95.36 "/>
+<polygon class="spike" points="684.01,107.14 680.68,95.36 687.34,95.36 "/>
 </svg>

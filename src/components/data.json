@@ -1,11 +1,64 @@
 
 {
-    "typeOfLight": [
-        "Radiant Light",     
-        "Dim Light",
-        "Shadowy Glow",
-        "Dark",
-        "Pitch Black"
+    "typeOfLight": [{
+
+        "name": "Radiant Light",
+        "statModifier": {
+                "normal": " +10 na testy związane z trafieniem, -25 do zaskoczenia przez wrogów, +15 do testów spostrzegawczości (wzrok), -10 do testu ukrywania się/skradania.",
+                "hard": " +8 na testy związane z trafieniem, -20 do zaskoczenia przez wrogów, +8 do testów spostrzegawczości (wzrok), -15 do testu ukrywania się/skradania.",
+                "extreme": " +5 na testy związane z trafieniem, -10 do zaskoczenia przez wrogów, +5 do testów spostrzegawczości (wzrok), -20 do testu ukrywania się/skradania.",
+                "impossible": " +5 na testy związane z trafieniem, -15 do zaskoczenia przez wrogów, +3 do testów spostrzegawczości (wzrok), -33 do testu ukrywania się/skradania."
+
+
+
+                
+
+        }    
+    },
+    {
+
+        "name":"Dim Light",
+        "statModifier": {
+            "normal": "+8 na testy związane z trafieniem, -15 do zaskoczenia przez wrogów, +10 do testów spostrzegawczości (wzrok), -8 do testu ukrywania się/skradania, +5 do przeszukiwania cennych przedmiotów.",
+            "hard": " +5 na testy związane z trafieniem, -12 do zaskoczenia przez wrogów, +5 do testów spostrzegawczości (wzrok), -10 do testu ukrywania się/skradania, +10 do przeszukiwania cennych przedmiotów.",
+            "extreme": " +3 na testy związane z trafieniem, -12 do zaskoczenia przez wrogów, +3 do testów spostrzegawczości (wzrok), -10 do testu ukrywania się/skradania, +10 do przeszukiwania cennych przedmiotów.",
+            "impossible": " +3 na testy związane z trafieniem, -8 do zaskoczenia przez wrogów, +1 do testów spostrzegawczości (wzrok), -25 do testu ukrywania się/skradania, +10 do przeszukiwania cennych przedmiotów."
+
+
+        }
+    },{
+
+        "name":"Shadowy Glow",
+        "statModifier": {
+            "normal": " +5 na testy związane z trafieniem, -10 do zaskoczenia przez wrogów, +5 do testów spostrzegawczości (wzrok), -5 do testu ukrywania się/skradania, +10 do przeszukiwania cennych przedmiotów.",
+            "hard": " +3 na testy związane z trafieniem, -10 do zaskoczenia przez wrogów, Brak modyfikatora pasywnego do testów spostrzegawczości (wzrok), -8 do testu ukrywania się/skradania, +5 do przeszukiwania, +15 do przeszukiwania cennych przedmiotów.",
+            "extreme": "Brak modyfikatora pasywnego na testy związane z trafieniem, -5 do zaskoczenia przez wrogów, Brak modyfikatora pasywnego do testów spostrzegawczości (wzrok), -8 do testu ukrywania się/skradania, +20 do przeszukiwania cennych przedmiotów.",
+            "impossible": "Brak modyfikatora pasywnego na testy związane z trafieniem, -3 do zaskoczenia przez wrogów, Brak modyfikatora pasywnego do testów spostrzegawczości (wzrok), -25 do testu ukrywania się/skradania, +25 do przeszukiwania cennych przedmiotów."
+
+        }
+    },{
+
+        "name":"Dark",
+        "statModifier": {
+            "normal": "Brak modyfikatora pasywnego na testy związane z trafieniem, Brak modyfikatora pasywnego do zaskoczenia przez wrogów, Brak modyfikatora pasywnego do testów spostrzegawczości (wzrok), Brak modyfikatora pasywnego do testu ukrywania się/skradania, +15 do przeszukiwania cennych przedmiotów.",
+            "hard": "-5 na testy związane z trafieniem, +5 do zaskoczenia przez wrogów, -5 do testów spostrzegawczości (wzrok), -5 do testu ukrywania się/skradania, +20 do przeszukiwania cennych przedmiotów.",
+            "extreme": "-5 na testy związane z trafieniem, +10 do zaskoczenia przez wrogów, -5 do testów spostrzegawczości (wzrok), -5 do testu ukrywania się/skradania, +25 do przeszukiwania cennych przedmiotów.",
+            "impossible": "-5 na testy związane z trafieniem, +5 do zaskoczenia przez wrogów, -15 do testów spostrzegawczości (wzrok), -5 do testu ukrywania się/skradania, +35 do przeszukiwania cennych przedmiotów."
+
+        }
+    },{
+
+        "name":"Pitch Black",
+        "statModifier": {
+            "normal": "-5 na testy związane z trafieniem, +10 do zaskoczenia przez wrogów, -10 do testów spostrzegawczości (wzrok) +1%/min grozy +20 do testu ukrywania się/skradania, +20 do przeszukiwania cennych przedmiotów, +1k4/2 zadawanych obrażeń.",
+            "hard": "-8 na testy związane z trafieniem, +15 do zaskoczenia przez wrogów, -15 do testów spostrzegawczości (wzrok) +1.5%/min grozy +18 do testu ukrywania się/skradania, +25 do przeszukiwania cennych przedmiotów, +1k4 zadawanych obrażeń.",
+            "extreme": "-8 na testy związane z trafieniem, +20 do zaskoczenia przez wrogów, -20 do testów spostrzegawczości (wzrok) +2%/min grozy +18 do testu ukrywania się/skradania, +33 do przeszukiwania cennych przedmiotów, +1k4+1 zadawanych obrażeń.",
+            "impossible": "-12 na testy związane z trafieniem, +33 do zaskoczenia przez wrogów, -33 do testów spostrzegawczości (wzrok) +3.33%/min grozy +10 do testu ukrywania się/skradania, +50 do przeszukiwania cennych przedmiotów, +1k6 zadawanych obrażeń."
+
+
+            
+        }
+    }
     ],
 
     "difficulty": [

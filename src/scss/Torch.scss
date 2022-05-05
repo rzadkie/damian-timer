@@ -1,14 +1,20 @@
 @use './App.scss';
 
+
+
+
+
 .Torch{
     overflow: hidden;
-    flex-grow: 1;
     display: grid;
     align-items: center;
     grid-template-rows: 2vw 2vw 2vw;
-    grid-template-columns: 4vw 4vw 4vw 4vw 4vw 4vw 4vw 4vw 4vw 4vw 4vw 4vw;
+    grid-template-columns: 4vw 4vw 4vw 4vw 4vw 4vw  4vw  4vw 4vw 4vw 4vw 4vw;
 
 }
+
+
+
 
 .LoadingBar{
     width: 38vw;
@@ -17,6 +23,7 @@
     z-index: 10;
     grid-row: 2 / 3;
     grid-column: 2 / 12;
+    
         // box-shadow: 
     // 0 2px 20px 5px App.$base-red,
     // 0 0 100px 10px App.$base-brown,
@@ -25,11 +32,27 @@
     
 }
 
+#canvas{
+    grid-row: 2 / 3;
+    grid-column: 7 / 8  ;
+    z-index: 90;
+}
+
+
 .BarFrame{
     width: 40vw;
     grid-row: 2 / 3;
     grid-column: 2 / 6;
     z-index: 20;
     fill: App.$base-grey;
+
+}
+
+.Handle{
+    justify-self: center;
+    z-index: 100;
+    height: 6vw;
+    grid-row: 2 / 3;
+    grid-column: 6 / 8;
 
 }

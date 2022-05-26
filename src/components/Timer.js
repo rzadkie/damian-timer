@@ -136,18 +136,15 @@ export default function Timer (){
             <label >czas
             <br/>
             <div className="TimeLabel">
-            <input type="text" className="TimeForm" name="time" placeholder="MM" 
-            onChange={({target}) => setMinutes(target.value)}/>
-            <input type="text" className="TimeForm" name="time" placeholder="SS" max="60"
-            onChange={({target}) => setSeconds(target.value)}/>
+            <input type="text" className="TimeForm" name="time" placeholder="MM" onChange={({target}) => setMinutes(target.value)}/>
+            <input type="text" className="TimeForm" name="time" placeholder="SS" max="60" onChange={({target}) => setSeconds(target.value)}/>
             
                 
             </div>
             
             </label>
 
-            <button className='BigButton' type="submit" onClick={() => storage.clear()}> reset  
-            </button>
+            <button className='BigButton' type="submit" onClick={() => storage.clear()}> reset </button>
             </form>
         </div>
 

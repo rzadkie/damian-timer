@@ -1,0 +1,51 @@
+@use './App.scss';
+
+.CharacterCreationMenu {
+    
+    display: flex;
+    position: fixed;
+    right: 45%;
+    bottom: 15%;
+    //min-width: 10vw;
+    //min-height: 5vw;
+    background-color: App.$base-black;
+    border: 1px solid App.$base-orange;
+    display: flex;
+    flex-direction: row;
+
+    .Close{
+        position: fixed;
+        justify-self: left;
+    }
+    
+}
+
+.CharacterDeletionMenu {
+    
+    display: flex;
+    position: fixed;
+    right: 30%;
+    bottom: 15%;
+    //min-width: 10vw;
+    //min-height: 5vw;
+    background-color: App.$base-black;
+    border: 1px solid App.$base-orange;
+    display: flex;
+    flex-direction: row;
+
+    .Close{
+        position: fixed;
+        justify-self: left;
+    }
+    
+}
+
+.Board{
+    width: 45vw;
+    height: 15vw;
+    background-color: App.$base-black;
+    display: flex;
+}
+.show{
+    display: none;
+}

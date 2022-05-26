@@ -3,6 +3,7 @@ import Torch from './Torch';
 import React, { useState, useEffect } from "react";
 import data from './data.json';
 import BtnSvg from './button';
+import FearStat from './FearStat';
 
 
 
@@ -19,7 +20,6 @@ export default function Incrementer(){
         
         let stop = false;
         let stopHundred = false;
-
         
         useEffect(() => {
         if(value >= 100){
@@ -115,50 +115,50 @@ export default function Incrementer(){
 
         //works?
     return(
-        <div className="Background">
+      <div className="Background">
             <Torch diff={expValue}/>
         <div className="Background2">
         
-        <div className="BTNsL">
-        {Object.entries(data.difficulty).map(type => (
-        <button
-        className='BigButton'
-        key={type}
-        onClick={() => {
-          setDiffLevel(type[1]);
-        }}
-          >
-            {type[1].name}
-          </button>
-        ))}
-      </div>
-
-        <div className="CenterPanel">
-            <div className="InfoDisplay">
-                <p>{light}</p>
-                <p className='Stats'>{stats}</p>
-                <p> {value} </p>
+          <div className="BTNsL">
+          {Object.entries(data.difficulty).map(type => (
+          <button
+          className='BigButton'
+          key={type}
+          onClick={() => {
+            setDiffLevel(type[1]);
+          }}
+            >
+              {type[1].name}
+            </button>
+          ))}
+        </div>
+        
+          <div className="CenterPanel">
+              <div className="InfoDisplay">
+                  <p>{light}</p>
+                  <p className='Stats'>{stats}</p>
+                  <p> {value} </p>
+              </div>
+        
+              <form >
+              <button className="BigButton" type="submit">reset</button>
+              </form>
+        
+          </div>
+        
+            <div className="BTNsR">
+              <button className="BigButton" disabled={stopHundred} onClick={() => setValue(value + diffLevel.value[0])}> {diffLevel.value[0]} </button>
+              <button className="BigButton" disabled={stop} onClick={() => setValue(value + diffLevel.value[1])}> {diffLevel.value[1]} </button>
+              <button className="BigButton" disabled={stop} onClick={() => setValue(value + diffLevel.value[2])}> {diffLevel.value[2]} </button>
+              <button className="BigButton" disabled={stop} onClick={() => setValue(value + diffLevel.value[3])}> {diffLevel.value[3]} </button>
+              <button className="BigButton" disabled={stop} onClick={() => setValue(value + diffLevel.value[4])}> {diffLevel.value[4]} </button>
             </div>
 
-            <form >
-            <button className="BigButton" type="submit">reset</button>
-            </form>
-
-        </div>
-
-        <div className="BTNsR">
-        <button className="BigButton" disabled={stopHundred} onClick={() => setValue(value + diffLevel.value[0])}> {diffLevel.value[0]} </button>
-        <button className="BigButton" disabled={stop} onClick={() => setValue(value + diffLevel.value[1])}> {diffLevel.value[1]} </button>
-        <button className="BigButton" disabled={stop} onClick={() => setValue(value + diffLevel.value[2])}> {diffLevel.value[2]} </button>
-        <button className="BigButton" disabled={stop} onClick={() => setValue(value + diffLevel.value[3])}> {diffLevel.value[3]} </button>
-        <button className="BigButton" disabled={stop} onClick={() => setValue(value + diffLevel.value[4])}> {diffLevel.value[4]} </button>
-
-        </div>
 
 
         </div>
-        </div>
-
+          <FearStat diff={expValue} difficulty={diffLevel.fright}/>
+      </div>
 
     )
 }

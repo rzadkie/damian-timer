@@ -48,8 +48,8 @@ export default function CharacterBoard({time, name, stress, difficulty}){
     return(
         <div className="CharacterPanel">
                     <div className='Info'>
-            <button className='VerySmallButton' onActive={() => {setStressState(stressState +1); updateStress()}}> + </button>
-            <button className='VerySmallButton' onActive={() => {setStressState(stressState -1); updateStress()}}> - </button>
+            <button className='VerySmallButton' onClick={() => {setStressState(stressState +1); updateStress()}}> + </button>
+            <button className='VerySmallButton' onClick={() => {setStressState(stressState -1); updateStress()}}> - </button>
 
             <p>{name}</p>
             <p>{stressState}</p>

@@ -1,3 +1,3 @@
-# damian-timer
+# Warhammer-Timer
 
-Timer for tabletop Warhammer RPG written in React
+Timer for homebrew tabletop Warhammer RPG campaign made in React

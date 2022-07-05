@@ -1,14 +1,47 @@
 @use '../../scss/App.scss';
 
-.CharacterPanel{
-
-}
 
 .placeholder{
     margin: 10px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: flex-end;
+    height: 100px;
+
+}
+
+
+.Info{
+    display: flex;
     align-items: center;
+    position: sticky;
+    bottom: 0;
+
+}
+.CharacterPanel{
+    margin: 10px;
+}
+
+
+
+.BoardWrapper{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@media (max-width: App.$mobile) {
+
+.CharacterPanel{
+    margin: 10px;
+}
+
+.placeholder{
+    margin: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    height: 100px;
+
 
 }
 
@@ -28,8 +61,8 @@
 
 }
 
-.VerySmallButton{
-    margin: 2px;
-    width: 30px;
-    height: 30px;
+.BoardWrapper{
+    display: flex;
+    flex-wrap: wrap;
+}
 }

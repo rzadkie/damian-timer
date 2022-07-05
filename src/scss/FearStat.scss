@@ -12,6 +12,8 @@
     border: 1px solid App.$base-orange;
     display: flex;
     flex-direction: row;
+    z-index: 20;
+
 
     .Close{
         position: fixed;
@@ -20,32 +22,53 @@
     
 }
 
-.CharacterDeletionMenu {
-    
-    display: flex;
-    position: fixed;
-    right: 30%;
-    bottom: 15%;
-    //min-width: 10vw;
-    //min-height: 5vw;
-    background-color: App.$base-black;
-    border: 1px solid App.$base-orange;
-    display: flex;
-    flex-direction: row;
 
-    .Close{
-        position: fixed;
-        justify-self: left;
-    }
-    
-}
 
 .Board{
     width: 45vw;
-    height: 15vw;
+    height: max-content;
     background-color: App.$base-black;
     display: flex;
 }
 .show{
-    display: none;
+    visibility: hidden;
+}
+
+@media (max-width: App.$mobile) {
+    .CharacterCreationMenu {
+    
+        display: flex;
+        position: fixed;
+        right: 45%;
+        bottom: 15%;
+        //min-width: 10vw;
+        //min-height: 5vw;
+        background-color: App.$base-black;
+        border: 1px solid App.$base-orange;
+        display: flex;
+        flex-direction: row;
+        z-index: 20;
+    
+    
+        .Close{
+            position: fixed;
+            justify-self: left;
+        }
+        
+    }
+    
+    
+    
+    .Board{
+        width: 40vh;
+        height: 50vh;
+        background-color: App.$base-black;
+        display: flex;
+        flex-wrap: wrap;
+        overflow: scroll;
+    }
+    .show{
+        visibility: hidden;
+    }
+    
 }

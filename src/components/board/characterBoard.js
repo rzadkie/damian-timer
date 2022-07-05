@@ -1,9 +1,42 @@
 import './characterBoard.scss';
 import { useEffect, useState, useContext } from "react";
 import FirebaseContext from '../../context/firebase';
+import styled from 'styled-components';
 
+const FearBarStyled = styled.div`
+background-color: #8F1B03;
+width: 20px;
+height: ${(props) => props.height}px;
+max-height: 100px;
+transform: rotate(180deg);
+top: 0%;
+margin-right: 5px;
+`
+const FearBar = ({height}) =>{
+    if (height >= 100){
+        let newHeight = height - 100;
+        return (
+        <div className='placeholder'>
+        <FearBarStyled height={height}/>
+        <FearBarStyled height={newHeight}/>
+        </div>
+        )
 
-export default function CharacterBoard({time, name, stress, difficulty}){
+    }
+    else{
+        return (<div className='placeholder'> <FearBarStyled height={height}/> </div>)
+
+    }
+
+};
+
+const VerySmallButton = styled.button`
+margin: 2px;
+width: 30px;
+height: 30px;
+`
+
+const CharacterBoard = ({time, name, stress, difficulty}) =>{
 
     const [stressState, setStressState] = useState(parseInt(stress));
     
@@ -12,26 +45,6 @@ export default function CharacterBoard({time, name, stress, difficulty}){
     console.log('stress: ', typeof stress);
     const {firebase} = useContext(FirebaseContext);
 
-
-    const heg ={
-        height: `${stressState}px`
-    };
-
-    // const bar = document.getElementById('chart');
-    // const shrinkKeyframes = new KeyframeEffect(
-    //     bar,[
-    //         {height: `${stressState}rem`}
-    //     ],
-    //     {duration: 3000, fill:'forwards'}
-    // )
-    
-    // const shrinkAnimation = new Animation(shrinkKeyframes, document.timeline);
-
-    // useEffect(() => {
-    //     shrinkAnimation.play();
-    // }, [stressState])
-
-
     const updateStress = async () => {
         try {
             await firebase.firestore().collection("characters").doc(name + 'id').update({
@@ -39,30 +52,29 @@ export default function CharacterBoard({time, name, stress, difficulty}){
             })
     }
      catch(error) {
+         console.log('updateStress: ', error);
 
      }
     }
-
 
     console.log(difficulty);
     return(
         <div className="CharacterPanel">
                     <div className='Info'>
-            <button className='VerySmallButton' onClick={() => {setStressState(stressState +1); updateStress()}}> + </button>
-            <button className='VerySmallButton' onClick={() => {setStressState(stressState -1); updateStress()}}> - </button>
+            <VerySmallButton onClick={() => {setStressState(stressState +1); updateStress()}}> + </VerySmallButton>
+            <VerySmallButton onClick={() => {setStressState(stressState -1); updateStress()}}> - </VerySmallButton>
 
             <p>{name}</p>
             <p>{stressState}</p>
         </div>
-            <div className='placeholder'>
 
-        <div style={heg} className="Chart" id='chart'>
+        <FearBar height={stressState}  id='chart'>
         
-        </div>
+        </FearBar>
 
-        </div>
 
 
         </div>
     )
 }
+export default CharacterBoard;

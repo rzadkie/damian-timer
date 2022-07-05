@@ -1,7 +1,16 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import FirebaseContext from "../context/firebase";
+import styled from 'styled-components';
 
-export default function Character({name, stress}){
+const IncBtn = styled.button`
+background-color: white;
+width: 3rem;
+height: 2rem;
+color: black;
+cursor: pointer;
+`
+
+const Character = ({name, stress}) => {
 
     const {firebase} = useContext(FirebaseContext);
 
@@ -27,7 +36,8 @@ export default function Character({name, stress}){
 
     return (
         <div >
-                <p>{name} {stress}</p> <p onClick={deleteCharacter}>x</p>
+                <p>{name} {stress}</p> <IncBtn onClick={deleteCharacter}>x</IncBtn>
         </div>
     ) 
 }
+export default Character

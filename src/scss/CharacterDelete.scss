@@ -1,0 +1,45 @@
+@use './App.scss';
+
+.CharacterDeletionMenu {
+    
+    display: flex;
+    position: fixed;
+    right: 30%;
+    bottom: 15%;
+    //min-width: 10vw;
+    //min-height: 5vw;
+    background-color: App.$base-black;
+    border: 1px solid App.$base-orange;
+    display: flex;
+    flex-direction: row;
+    z-index: 20;
+
+    .Close{
+        position: fixed;
+        justify-self: left;
+    }
+    overflow-y: scroll;
+    max-height: 50em;
+    
+}
+
+.show{
+    visibility: hidden;
+}
+
+
+.CharacterDeletionMenu::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+.CharacterDeletionMenu::-webkit-scrollbar-track {
+    background: none; 
+  }
+   
+.CharacterDeletionMenu::-webkit-scrollbar-thumb {
+    background: App.$base-orange;
+  }
+  
+.CharacterDeletionMenu::-webkit-scrollbar-thumb:hover {
+    background: App.$dark-orange; 
+  }

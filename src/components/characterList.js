@@ -4,7 +4,7 @@ import Skeleton from 'react-loading-skeleton';
 import { getCharacters } from '../services/firebase';
 import Character from "./character";
 
-export default function CharacterList(){
+const CharacterList = () =>{
 
     
     const [characters, setCharacters] = useState(null);
@@ -20,7 +20,7 @@ export default function CharacterList(){
     }, []);
    
     console.log(characters);
-    return  !characters ? (<Skeleton count={1} height={150}/>) : characters.length > 0 ? (
+    return  !characters ? (<Skeleton className="CharacterList" count={1} height={150}/>) : characters.length > 0 ? (
         <div >
                     {characters.map((character) =>(
 
@@ -34,3 +34,4 @@ export default function CharacterList(){
                 </div>
     ) : null
 }
+export default CharacterList;

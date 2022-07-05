@@ -1,10 +1,10 @@
 import react, {useEffect, useState, useContext} from "react";
-import './characterListBoardSelect.scss';
+import './characterBoard.scss';
 import Skeleton from 'react-loading-skeleton';
 import { getCharacters } from '../../services/firebase';
 import CharacterBoard from "./characterBoard";
 
-export default function CharacterListBoardOnSelect({difficulty, time}){
+const CharacterListBoardOnSelect = ({difficulty, time}) =>{
 
     
     const [characters, setCharacters] = useState(null);
@@ -19,7 +19,7 @@ export default function CharacterListBoardOnSelect({difficulty, time}){
             listOfCharacters();
     }, []);
    
-    console.log(characters);
+    console.log("diff in charListBoard: ", difficulty);
     return  !characters ? (<Skeleton count={1} height={150}/>) : characters.length > 0 ? (
         <div className="BoardWrapper" >
                     {characters.map((character) =>(
@@ -36,3 +36,4 @@ export default function CharacterListBoardOnSelect({difficulty, time}){
                 </div>
     ) : null
 }
+export default CharacterListBoardOnSelect;

@@ -9,39 +9,9 @@ import React, { useState, useEffect } from "react";
 import data from './data.json'
 
 
-
-// function resolveAfter2Seconds() {
-//     return new Promise(resolve => {
-//       setTimeout(() => {
-//         const anim = new Engine('canvas', "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/dff16b3a-6639-4b48-bf5d-a0be252b611f/delu7fg-ab2644e4-9681-4d3a-a7f8-e8fe513988d7.png/v1/fill/w_590,h_219,strp/custom_character_sprite_sheet_template_by_kooltimyt_delu7fg-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MjE5IiwicGF0aCI6IlwvZlwvZGZmMTZiM2EtNjYzOS00YjQ4LWJmNWQtYTBiZTI1MmI2MTFmXC9kZWx1N2ZnLWFiMjY0NGU0LTk2ODEtNGQzYS1hN2Y4LWU4ZmU1MTM5ODhkNy5wbmciLCJ3aWR0aCI6Ijw9NTkwIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.TfdUbmaOJyq_yaQoYF1umIAwIhhGU6lz4-Piy7enL88" );
-//         resolve('resolved');
-//         anim.State.generateState('lol', 0, 10);
-//         console.log('works?');
-//         anim.animate(anim.State.getState('lol'));
-//         console.log(anim.spirte);
-//         function frame(){
-//             anim.context.clearRect(0, 0, anim.width, anim.height);
-//             anim.animate(anim.State.getState("lol"));
-//             requestAnimationFrame(frame);
-//             console.log(anim.context, anim.count)
-
-//         }
-//         frame();
-        
-//     }, 2000);
-//     });
-//   }
-  
-//   async function asyncCall() {
-//     console.log('calling');
-//     const result = await resolveAfter2Seconds();
-//     console.log(result);
-//   }
-  
-//   asyncCall();
   
 
-export default function Timer (){
+const Timer = () =>{
 
         const [seconds, setSeconds] = useState(0);
         const [minutes, setMinutes] = useState(0);
@@ -50,7 +20,6 @@ export default function Timer (){
         const [isRunning, setIsRunning] = useState(0);
         const storage = window.localStorage
         useEffect(() => {
-
             if (bloodyFuckingStupid){
                 if (seconds === 0 && minutes > 0){
                     setMinutes(minutes - 1);
@@ -165,3 +134,4 @@ export default function Timer (){
 
     );
 }
+export default Timer;

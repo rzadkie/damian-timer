@@ -1,16 +1,18 @@
 import react, {useEffect, useState, useContext} from "react";
 import styled from 'styled-components';
 import '../scss/FearStat.scss'
+import '../scss/CharacterDelete.scss'
 import FirebaseContext from "../context/firebase";
 import { doesUsernameExist} from "../services/firebase";
 import {doc, addDoc, collection} from 'firebase/firestore';
 import CharacterList from "./characterList";
 import CharacterBoard from "./board/characterBoard";
 import CharacterListBoardOnSelect from "./board/characterListBoardSelect";
+import Draggable from 'react-draggable'; 
 
 
 
-export default function FearStat({diff, difficulty}){
+const FearStat = ({diff, difficulty}) =>{
 
 
     const [name, setName] = useState('');
@@ -19,14 +21,13 @@ export default function FearStat({diff, difficulty}){
     const [error, setError] = useState('');
 
 
-
     const handleNewCharacter = async (event) => {
         event.preventDefault();
         const nameExists = await doesUsernameExist(name);
         if (!nameExists.length) {
             try {
-                let nameid = name.replace(/\s+/g, '');
-                await firebase.firestore().collection("characters").doc(nameid + 'id').set({
+                //let nameid = name.replace(/\s+/g, '');
+                await firebase.firestore().collection("characters").doc(name + 'id').set({
                     name: name.toLowerCase(),
                     stress: stress,
                 });
@@ -55,23 +56,26 @@ export default function FearStat({diff, difficulty}){
 
     return(
         <div className="StatBox">
+                <Draggable>
                 <div className="CharacterCreationMenu show">
                 <form>
                     <input type="text" id='name' name="name" placeholder="name" onChange={({target}) => setName(target.value)} value={name} required />
-                    <input type="integer" id='stress' name="stress" placeholder="stress"onChange={({target}) => setStress(target.value)} value={stress} required/>
+                    <input type="integer" id='stress' name="stress" placeholder="stress" onChange={({target}) => setStress(target.value)} value={stress} required/>
                 </form>
                     <button name='Add' onClick={handleNewCharacter}/>
                     <button onClick={() => {document.querySelector('.CharacterCreationMenu').classList.toggle('show'); setName(''); setStress('')}}> cancel </button>
                 
              </div>
+             </Draggable>
+             <Draggable>
              <div className="CharacterDeletionMenu show">
                  <CharacterList/>
              </div>
+             </Draggable>
             
             {/* <div className='CharList show'>
              <CharacterListBoardOnSelect />
             </div> */}
-
             <nav className="Interface">
                 <button onClick={() => {document.querySelector('.CharacterCreationMenu').classList.toggle('show')}}> add </button>
                 <button onClick={() => {document.querySelector('.CharacterDeletionMenu').classList.toggle('show')}}> delete </button>
@@ -83,9 +87,9 @@ export default function FearStat({diff, difficulty}){
             <CharacterListBoardOnSelect time={diff} difficulty={difficulty}/>
 
              </div>
-            
 
         </div>
 
     )
 }
+export default FearStat;

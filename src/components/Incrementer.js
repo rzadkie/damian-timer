@@ -8,7 +8,7 @@ import FearStat from './FearStat';
 
 
 
-export default function Incrementer(){
+const Incrementer = () =>{
         const [value, setValue] = useState(100);
         const [diffLevel, setDiffLevel] = useState(data.difficulty[0]);
         const [stats, setStats] = useState('');
@@ -16,25 +16,6 @@ export default function Incrementer(){
         const expValue = value / 100;
 
         const [light, setLight] = useState('');
-
-        
-        let stop = false;
-        let stopHundred = false;
-        
-        useEffect(() => {
-        if(value >= 100){
-          stopHundred = true;
-          setValue(100)
-        }
-        else
-          stopHundred = false;
-        if(value <= 0){
-          stop = true;
-          setValue(0)
-        }
-        else
-        stop = false;
-        })
 
 
 
@@ -147,11 +128,11 @@ export default function Incrementer(){
           </div>
         
             <div className="BTNsR">
-              <button className="BigButton" disabled={stopHundred} onClick={() => setValue(value + diffLevel.value[0])}> {diffLevel.value[0]} </button>
-              <button className="BigButton" disabled={stop} onClick={() => setValue(value + diffLevel.value[1])}> {diffLevel.value[1]} </button>
-              <button className="BigButton" disabled={stop} onClick={() => setValue(value + diffLevel.value[2])}> {diffLevel.value[2]} </button>
-              <button className="BigButton" disabled={stop} onClick={() => setValue(value + diffLevel.value[3])}> {diffLevel.value[3]} </button>
-              <button className="BigButton" disabled={stop} onClick={() => setValue(value + diffLevel.value[4])}> {diffLevel.value[4]} </button>
+              <button className="BigButton" disabled={value == 0} onClick={() => setValue(value + diffLevel.value[0])}> {diffLevel.value[0]} </button>
+              <button className="BigButton" disabled={value == 0} onClick={() => setValue(value + diffLevel.value[1])}> {diffLevel.value[1]} </button>
+              <button className="BigButton" disabled={value == 0} onClick={() => setValue(value + diffLevel.value[2])}> {diffLevel.value[2]} </button>
+              <button className="BigButton" disabled={value == 0} onClick={() => setValue(value + diffLevel.value[3])}> {diffLevel.value[3]} </button>
+              <button className="BigButton" disabled={value == 100} onClick={() => setValue(value + diffLevel.value[4])}> {diffLevel.value[4]} </button>
             </div>
 
 
@@ -162,3 +143,4 @@ export default function Incrementer(){
 
     )
 }
+export default Incrementer;

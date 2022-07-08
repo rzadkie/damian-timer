@@ -5,36 +5,36 @@
         "name": "Radiant Light",
         "statModifier": {
                 "normal": "+10 ACC -25 Heroes Suprised +15 Perceptivity (sight) -10 Hiding / Sneaking with torch. ",
-                "hard": " +8 na testy związane z trafieniem, -20 do zaskoczenia przez wrogów, +8 do testów spostrzegawczości (wzrok), -15 do testu ukrywania się/skradania.",
-                "extreme": " +5 na testy związane z trafieniem, -10 do zaskoczenia przez wrogów, +5 do testów spostrzegawczości (wzrok), -20 do testu ukrywania się/skradania.",
-                "impossible": " +5 na testy związane z trafieniem, -15 do zaskoczenia przez wrogów, +3 do testów spostrzegawczości (wzrok), -33 do testu ukrywania się/skradania."
+                "hard": " +8 ACC -20 Heroes Suprised, +8 Perceptivity (sight) -15 Hiding / Sneaking with torch. ",
+                "extreme": " +5 ACC,   -15 Heroes Suprised,  +5 Perceptivity (sight)  -20 Hiding / Sneaking with torch. ",
+                "impossible": " +5 ACC,  -10 Heroes Suprised, +3 Perceptivity (sight) -33 Hiding / Sneaking with torch. "
         }    
     },
     {
         "name":"Dim Light",
         "statModifier": {
             "normal": "+8 ACC, -15 Heroes Suprised, +10 Perceptivity (sight) -8 Hiding / Sneaking with torch, +5 Loot (search).",
-            "hard": " +5 na testy związane z trafieniem, -12 do zaskoczenia przez wrogów, +5 do testów spostrzegawczości (wzrok), -10 do testu ukrywania się/skradania, +10 do przeszukiwania cennych przedmiotów.",
-            "extreme": " +3 na testy związane z trafieniem, -12 do zaskoczenia przez wrogów, +3 do testów spostrzegawczości (wzrok), -10 do testu ukrywania się/skradania, +10 do przeszukiwania cennych przedmiotów.",
-            "impossible": " +3 na testy związane z trafieniem, -8 do zaskoczenia przez wrogów, +1 do testów spostrzegawczości (wzrok), -25 do testu ukrywania się/skradania, +10 do przeszukiwania cennych przedmiotów."
+            "hard": "+5 ACC, -12 Heroes Suprised, +5 Perceptivity (sight), -10 Hiding / Sneaking with torch, +10 Loot (search). ",
+            "extreme": " +3 ACC,  -12 Heroes Suprised, +3 Perceptivity (sight) -10 Hiding / Sneaking with torch, +10 Loot (search). ",
+            "impossible": " +3 ACC,  -8 Heroes Suprised, +1 Perceptivity (sight), -25 Hiding / Sneaking with torch, +10 Loot (search)."
         }
     },{
 
         "name":"Shadowy Glow",
         "statModifier": {
             "normal": "+5 ACC, -10 Heroes Suprised, +5 Perceptivity (sight) -5 Hiding / Sneaking with torch, +10 Loot (search). ",
-            "hard": " +3 na testy związane z trafieniem, -10 do zaskoczenia przez wrogów, Brak modyfikatora pasywnego do testów spostrzegawczości (wzrok), -8 do testu ukrywania się/skradania, +5 do przeszukiwania, +15 do przeszukiwania cennych przedmiotów.",
-            "extreme": "Brak modyfikatora pasywnego na testy związane z trafieniem, -5 do zaskoczenia przez wrogów, Brak modyfikatora pasywnego do testów spostrzegawczości (wzrok), -8 do testu ukrywania się/skradania, +20 do przeszukiwania cennych przedmiotów.",
-            "impossible": "Brak modyfikatora pasywnego na testy związane z trafieniem, -3 do zaskoczenia przez wrogów, Brak modyfikatora pasywnego do testów spostrzegawczości (wzrok), -25 do testu ukrywania się/skradania, +25 do przeszukiwania cennych przedmiotów."
+            "hard": " +3 ACC, -5 Heroes Suprised, -8 Hiding / Sneaking with torch, +15 Loot (search). ",
+            "extreme": " -5 Heroes Suprised, -8 Hiding / Sneaking with torch +20 Loot (search). ",
+            "impossible": " -3 Heroes Suprised, -20 Hiding / Sneaking with torch, +25 Loot (search). "
         }
     },{
 
         "name":"Dark",
         "statModifier": {
             "normal": "+15 Loot (search). ",
-            "hard": "-5 na testy związane z trafieniem, +5 do zaskoczenia przez wrogów, -5 do testów spostrzegawczości (wzrok), -5 do testu ukrywania się/skradania, +20 do przeszukiwania cennych przedmiotów.",
-            "extreme": "-5 na testy związane z trafieniem, +10 do zaskoczenia przez wrogów, -5 do testów spostrzegawczości (wzrok), -5 do testu ukrywania się/skradania, +25 do przeszukiwania cennych przedmiotów.",
-            "impossible": "-5 na testy związane z trafieniem, +5 do zaskoczenia przez wrogów, -15 do testów spostrzegawczości (wzrok), -5 do testu ukrywania się/skradania, +35 do przeszukiwania cennych przedmiotów."
+            "hard": " -5 ACC, +5 Heroes Suprised, -5 Perceptivity (sight) -5 Hiding / Sneaking with torch, +20 Loot (search). ",
+            "extreme": " -5 ACC,  +10 Heroes Suprised, -5 Perceptivity (sight) -5 Hiding / Sneaking with torch, +25 Loot (search). ",
+            "impossible": " -8 ACC,  +5 Heroes Suprised, -5 Perceptivity (sight), -15 Hiding / Sneaking with torch, +35 Loot (search). "
 
         }
     },{
@@ -42,9 +42,9 @@
         "name":"Pitch Black",
         "statModifier": {
             "normal": "-5 ACC, +10 Heroes Suprised, -10 Perceptivity (sight) +20 Hiding / Sneaking with torch, +20 Loot (search). +1k4/2 DMG dealt.",
-            "hard": "-8 na testy związane z trafieniem, +15 do zaskoczenia przez wrogów, -15 do testów spostrzegawczości (wzrok) +1.5%/min grozy +18 do testu ukrywania się/skradania, +25 do przeszukiwania cennych przedmiotów, +1k4 zadawanych obrażeń.",
-            "extreme": "-8 na testy związane z trafieniem, +20 do zaskoczenia przez wrogów, -20 do testów spostrzegawczości (wzrok) +2%/min grozy +18 do testu ukrywania się/skradania, +33 do przeszukiwania cennych przedmiotów, +1k4+1 zadawanych obrażeń.",
-            "impossible": "-12 na testy związane z trafieniem, +33 do zaskoczenia przez wrogów, -33 do testów spostrzegawczości (wzrok) +3.33%/min grozy +10 do testu ukrywania się/skradania, +50 do przeszukiwania cennych przedmiotów, +1k6 zadawanych obrażeń."
+            "hard": " -8 ACC,   +15 Heroes Suprised,  -15 Perceptivity (sight),  +18 Hiding / Sneaking with torch,  +25 Loot (search).  +1k4 DMG dealt.",
+            "extreme": " -8 ACC,  +20 Heroes Suprised, -20 Perceptivity (sight) +18 Hiding / Sneaking with torch, +33 Loot (search). +1k4 + 1 DMG dealt.",
+            "impossible": " -12 ACC,  +33 Heroes Suprised, -33 Perceptivity (sight) +10 Hiding / Sneaking with torch, +50 Loot (search). +1k6 DMG dealt."
          
         }
     }

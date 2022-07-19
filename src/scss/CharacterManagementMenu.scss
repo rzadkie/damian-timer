@@ -1,0 +1,111 @@
+@use "./App.scss";
+.CharacterManagementMenu{
+  place-self: center;
+  position: fixed;
+  top: 40%;
+  display: flex;
+  width: 30vw;
+  height: 20vw;
+  z-index: 40;
+  background-color: App.$base-black;
+  border: 1px solid App.$base-orange;
+  justify-content: space-evenly;
+
+
+  .Close {
+    position: absolute;
+    z-index: 21;
+    top: 0;
+    margin: 0;
+    right: 2%;
+
+}
+
+    .CharacterDeletionMenu {
+        //min-width: 10vw;
+        //min-height: 5vw;
+        background-color: App.$base-black;
+        border: 1px solid App.$base-orange;
+        display: flex;
+        flex-direction: row;
+        z-index: 20;
+        width: 10vw;
+        place-content: center;
+      
+        overflow-y: scroll;
+        max-height: 50em;
+      }
+      
+      
+      .CharacterDeletionMenu::-webkit-scrollbar {
+        width: 5px;
+      }
+      
+      .CharacterDeletionMenu::-webkit-scrollbar-track {
+        background: none;
+      }
+      
+      .CharacterDeletionMenu::-webkit-scrollbar-thumb {
+        background: App.$base-orange;
+      }
+      
+      .CharacterDeletionMenu::-webkit-scrollbar-thumb:hover {
+        background: App.$dark-orange;
+      }
+      
+      .CharacterCreationMenu {
+        form{
+          width: 20vw;
+          height: 10vw;
+          input{
+            border: 1px solid App.$base-orange;
+            width: 10vw;
+          }
+        }
+        button{
+          width: 4vw;
+          height: 2vw;
+        }
+          justify-content: flex-start;
+          align-items: center;
+          display: flex;
+          //min-width: 10vw;
+          //min-height: 5vw;
+          background-color: App.$base-black;
+          border: 1px solid App.$base-orange;
+          flex-direction: column;
+          width: 20vw;
+          z-index: 20;
+      
+
+      }
+      
+
+      
+      @media (max-width: App.$mobile) {
+          .CharacterCreationMenu {
+              display: flex;
+              position: fixed;
+              right: 45%;
+              bottom: 15%;
+              //min-width: 10vw;
+              //min-height: 5vw;
+              background-color: App.$base-black;
+              border: 1px solid App.$base-orange;
+              display: flex;
+              flex-direction: row;
+              z-index: 20;
+      
+              .Close {
+                  position: fixed;
+                  justify-self: left;
+              }
+          }
+      
+
+      }
+      
+}
+.show {
+  display: none;
+}

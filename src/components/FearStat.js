@@ -1,7 +1,7 @@
 import react, {useEffect, useState, useContext} from "react";
 import styled from 'styled-components';
 import '../scss/FearStat.scss'
-import '../scss/CharacterDelete.scss'
+import '../scss/CharacterManagementMenu.scss'
 import FirebaseContext from "../context/firebase";
 import { doesUsernameExist} from "../services/firebase";
 import {doc, addDoc, collection} from 'firebase/firestore';
@@ -56,26 +56,29 @@ const FearStat = ({diff, difficulty}) =>{
 
     return(
         <div className="StatBox">
-                <div className="CharacterCreationMenu show">
+            <nav className="Interface">
+                <button onClick={() => {document.querySelector('.CharacterManagementMenu').classList.toggle('show')}}> manage </button>
+            </nav>
+            <div className="CharacterManagementMenu show">
+                <div className="CharacterCreationMenu">
                 <form>
                     <input type="text" id='name' name="name" placeholder="name" onChange={({target}) => setName(target.value)} value={name} required />
                     <input type="integer" id='stress' name="stress" placeholder="stress" onChange={({target}) => setStress(target.value)} value={stress} required/>
                 </form>
-                    <button name='Add' onClick={handleNewCharacter}/>
+                    <button onClick={handleNewCharacter}> Add </button>
                     <button onClick={() => {document.querySelector('.CharacterCreationMenu').classList.toggle('show'); setName(''); setStress('')}}> cancel </button>
                 
              </div>
-             <div className="CharacterDeletionMenu show">
+             <div className="CharacterDeletionMenu">
                  <CharacterList/>
+             </div>
+             <p className="Close" onClick={() => {document.querySelector('.CharacterManagementMenu').classList.toggle('show')}}>x</p>
              </div>
             
             {/* <div className='CharList show'>
              <CharacterListBoardOnSelect />
             </div> */}
-            <nav className="Interface">
-                <button onClick={() => {document.querySelector('.CharacterCreationMenu').classList.toggle('show')}}> add </button>
-                <button onClick={() => {document.querySelector('.CharacterDeletionMenu').classList.toggle('show')}}> delete </button>
-            </nav>
+
 
              <div className="Board">
   
@@ -85,6 +88,7 @@ const FearStat = ({diff, difficulty}) =>{
              </div>
 
         </div>
+        
 
     )
 }

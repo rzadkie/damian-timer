@@ -1,68 +1,57 @@
-@use '../../scss/App.scss';
+@use "../../scss/App.scss";
 
-
-.placeholder{
+.placeholder {
     margin: 10px;
     display: flex;
     flex-direction: row;
     align-items: flex-end;
     height: 100px;
-
 }
 
-
-.Info{
+.Info {
     display: flex;
     align-items: center;
     position: sticky;
     bottom: 0;
-
 }
-.CharacterPanel{
+.CharacterPanel {
     margin: 10px;
 }
 
-
-
-.BoardWrapper{
+.BoardWrapper {
     display: flex;
     flex-wrap: wrap;
 }
 
 @media (max-width: App.$mobile) {
+    .CharacterPanel {
+        margin: 10px;
+    }
 
-.CharacterPanel{
-    margin: 10px;
-}
+    .placeholder {
+        margin: 5px;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        height: 100px;
+    }
 
-.placeholder{
-    margin: 5px;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    height: 100px;
+    .Chart {
+        background-color: App.$base-red;
+        width: 20px;
+        //height: 100px;
+        transform: rotate(180deg);
+    }
 
+    .Info {
+        display: flex;
+        align-items: center;
+        position: sticky;
+        bottom: 0;
+    }
 
-}
-
-.Chart{
-    background-color: App.$base-red;
-    width: 20px;
-    //height: 100px;
-    transform: rotate(180deg);
-
-}
-
-.Info{
-    display: flex;
-    align-items: center;
-    position: sticky;
-    bottom: 0;
-
-}
-
-.BoardWrapper{
-    display: flex;
-    flex-wrap: wrap;
-}
+    .BoardWrapper {
+        display: flex;
+        flex-wrap: wrap;
+    }
 }

@@ -1,7 +1,9 @@
 import react, {useEffect, useState, useContext} from "react";
 
 import Skeleton from 'react-loading-skeleton';
-import { getCharacters } from '../services/firebase';
+import { onSnapshot } from "firebase/firestore";
+
+import { getCharacters, col} from '../services/firebase';
 import Character from "./character";
 
 const CharacterList = () =>{
@@ -15,11 +17,15 @@ const CharacterList = () =>{
             setCharacters(response);
 
         }
+        const update = onSnapshot(col, snapshot => {
+            setCharacters(snapshot.docs.map(user => ({...user.data()})))
+        })
 
-            listOfCharacters();
-    }, []);
+    return () => {
+        update();
+    }
+}, []);
    
-    console.log(characters);
     return  !characters ? (<Skeleton className="CharacterList" count={1} height={150}/>) : characters.length > 0 ? (
         <div >
                     {characters.map((character) =>(

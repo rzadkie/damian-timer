@@ -1,15 +1,19 @@
 import '../scss/Timer.scss';
 import Torch from './Torch';
 import React, { useState, useEffect } from "react";
+import styled, { keyframes } from 'styled-components';
 import data from './data.json';
 import BtnSvg from './button';
 import FearStat from './FearStat';
 
 
 
-
 const Incrementer = () =>{
+        const min = 0;
+        const max = 100;
+        const clamp = (num, min, max) => Math.min(Math.max(num, min), max);
         const [value, setValue] = useState(100);
+        const [change, setChange] = useState(0);
         const [diffLevel, setDiffLevel] = useState(data.difficulty[0]);
         const [stats, setStats] = useState('');
 
@@ -17,11 +21,13 @@ const Incrementer = () =>{
 
         const [light, setLight] = useState('');
 
+        let [time, setTime] = useState(30);
+        const [run, setRun] = useState(false);
 
-
+        console.log('clamp: ', change);
+        
         useEffect(() => {
           console.log(diffLevel);
-                                
         if(value >= 76){
           setLight(data.typeOfLight[0].name);  
           switch (diffLevel.name){
@@ -94,7 +100,66 @@ const Incrementer = () =>{
         }
         });
 
+        useEffect(() => {
+
+          let end = change + value;
+          let valve = clamp(end, min, max)
+          console.log('ssssssss: ', valve);
+        },[value])
         //works?
+
+        useEffect(() => {
+          if (run){
+              if (time > 0){
+                      setTimeout(() => setTime(time - 1), 1000)
+                  }
+                if (time === 0){
+                    clearTimeout();
+                    setTime(30);
+                    setRun(false)
+                } 
+
+
+      }}, [run, time]);
+
+      const red = '#8f1b03';
+      const black = ' #090100;'
+      const brown ='#150d02';
+
+      const glow = keyframes`
+      0%{
+        filter: drop-shadow(0px 0px ${time}px #8f1b03);
+        }
+      20%{
+        filter: drop-shadow(0px 0px ${time}px #8f1b03);
+        }
+      40%{
+        filter: drop-shadow(0px 0px 20px #8f1b03);
+        }
+      60%{
+        filter: drop-shadow(0px 0px ${time}px #8f1b03);
+        }
+      80%{
+        filter: drop-shadow(0px 0px 10px ${run ? brown : red});
+        }
+      100%{
+        filter: drop-shadow(0px 0px ${time}px ${run ? black : red}));
+        }    
+      `
+
+      const Turn = styled.button`
+      min-width: 45px;
+      min-height: 45px;
+      width: 4vw;
+      height: 4vw;
+      border-radius: 50%;
+      color: white;
+      background-color: #8f1b03;
+      align-self: center;
+      animation: ${glow} ${time}s infinite linear;
+      `
+
+
     return(
       <div className="Background">
             <Torch diff={expValue}/>
@@ -112,6 +177,7 @@ const Incrementer = () =>{
               {type[1].name}
             </button>
           ))}
+              <Turn onClick={() => setRun(true)}>Start Turn <div>{time}</div></Turn>
         </div>
         
           <div className="CenterPanel">
@@ -128,11 +194,11 @@ const Incrementer = () =>{
           </div>
         
             <div className="BTNsR">
-              <button className="BigButton" disabled={value == 0} onClick={() => setValue(value + diffLevel.value[0])}> {diffLevel.value[0]} </button>
-              <button className="BigButton" disabled={value == 0} onClick={() => setValue(value + diffLevel.value[1])}> {diffLevel.value[1]} </button>
-              <button className="BigButton" disabled={value == 0} onClick={() => setValue(value + diffLevel.value[2])}> {diffLevel.value[2]} </button>
-              <button className="BigButton" disabled={value == 0} onClick={() => setValue(value + diffLevel.value[3])}> {diffLevel.value[3]} </button>
-              <button className="BigButton" disabled={value == 100} onClick={() => setValue(value + diffLevel.value[4])}> {diffLevel.value[4]} </button>
+              <button className="BigButton" disabled={value === 0} onClick={() => setChange(diffLevel.value[0])}> {diffLevel.value[0]} </button>
+              <button className="BigButton" disabled={value === 0} onClick={() => setValue(clamp(value + diffLevel.value[1]), min, max)}> {diffLevel.value[1]} </button>
+              <button className="BigButton" disabled={value === 0} onClick={() => setValue(clamp(value + diffLevel.value[2]), min, max)}> {diffLevel.value[2]} </button>
+              <button className="BigButton" disabled={value === 0} onClick={() => setValue(clamp(value + diffLevel.value[3]), min, max)}> {diffLevel.value[3]} </button>
+              <button className="BigButton" disabled={value === 100} onClick={() => setValue(clamp(value + diffLevel.value[4]), min, max)}> {diffLevel.value[4]} </button>
             </div>
 
 

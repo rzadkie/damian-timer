@@ -1,7 +1,9 @@
-@use './App.scss';
+@use "./App.scss";
+
+.StatBox{
+}
 
 .CharacterCreationMenu {
-    
     display: flex;
     position: fixed;
     right: 45%;
@@ -14,29 +16,24 @@
     flex-direction: row;
     z-index: 20;
 
-
-    .Close{
+    .Close {
         position: fixed;
         justify-self: left;
     }
-    
 }
 
-
-
-.Board{
+.Board {
     width: 45vw;
     height: max-content;
     background-color: App.$base-black;
     display: flex;
 }
-.show{
+.show {
     visibility: hidden;
 }
 
 @media (max-width: App.$mobile) {
     .CharacterCreationMenu {
-    
         display: flex;
         position: fixed;
         right: 45%;
@@ -48,18 +45,14 @@
         display: flex;
         flex-direction: row;
         z-index: 20;
-    
-    
-        .Close{
+
+        .Close {
             position: fixed;
             justify-self: left;
         }
-        
     }
-    
-    
-    
-    .Board{
+
+    .Board {
         width: 40vh;
         height: 50vh;
         background-color: App.$base-black;
@@ -67,8 +60,7 @@
         flex-wrap: wrap;
         overflow: scroll;
     }
-    .show{
+    .show {
         visibility: hidden;
     }
-    
 }

@@ -1,4 +1,7 @@
+import { onSnapshot, QuerySnapshot, collection, getFirestore } from 'firebase/firestore';
 import { firebase, FieldValue } from '../lib/firebase';
+const db = getFirestore(firebase);
+export const col = collection(db, 'characters');
 
 export async function doesUsernameExist(name) {
     const result = await firebase.firestore().collection('characters').where('name', '==', name).get();
@@ -22,15 +25,5 @@ export async function getCharacters() {
     const characters = result.docs.map((user) => ({
         ...user.data()    }));
 
-    return characters;
-}
-
-export async function getCharactersLive() {
-    let query = firebase.firestore().collection('characters');
-
-    const result = await query.get();
-    const characters = result.docs.map((user) => ({
-        ...user.data()    }));
-
-    return characters;
-}
+        return characters;
+    }

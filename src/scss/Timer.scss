@@ -1,7 +1,6 @@
-@use './App.scss';
+@use "./App.scss";
 
 %Background {
-
     display: flex;
     max-height: 100%;
     max-width: 90%;
@@ -9,13 +8,10 @@
     margin: 0.25vmax;
     background-color: App.$base-brown;
     justify-content: center;
-    box-shadow: 
-    0 0 40px 10px App.$base-brown,
-    
+    box-shadow: 0 0 40px 10px App.$base-brown;
 }
 
-
-%Button{
+%Button {
     width: 12vw;
     min-width: 100px;
     height: 4vw;
@@ -29,27 +25,26 @@
     cursor: pointer;
 }
 
-
 @keyframes scale {
-    0%{
-    filter: brightness(100%);
+    0% {
+        filter: brightness(100%);
     }
-    25%{
+    25% {
         filter: brightness(110%);
     }
-    50%{
+    50% {
         filter: brightness(120%);
     }
-    75%{
+    75% {
         filter: brightness(110%);
     }
-    100%{
+    100% {
         filter: brightness(100%);
     }
 }
-.BigButton{
+.BigButton {
     @extend %Button;
-    background: url('../Component2.svg');
+    background: url("../Component2.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100%;
@@ -58,38 +53,34 @@
     //background: #181818;
 }
 
-.BigButtonAlt{
+.BigButtonAlt {
     @extend %Button;
     margin-top: 1vmax;
     margin-bottom: 1vmax;
 }
 
-.Background{
+.Background {
     @extend %Background;
     flex-direction: column;
     align-items: center;
-    
 }
-.Background2{
+.Background2 {
     @extend %Background;
     flex-direction: row;
 }
 
-.BTNsR{
+.BTNsR {
     @extend %ButtonCollumn;
     margin-left: 5vw;
     justify-self: right;
 }
 
-.BTNsL{
+.BTNsL {
     @extend %ButtonCollumn;
     margin-right: 5vw;
     justify-self: left;
     z-index: 30;
 }
-
-
-
 
 .BigButton:hover {
     animation: 1s scale ease-in-out infinite;
@@ -98,68 +89,55 @@
     transform: scale(90%);
 }
 
-
-
-.DiffButton{
+.DiffButton {
     width: 6vw;
     height: 3vw;
     font-size: 3vh;
-
 }
 
-.CustomButton{
+.CustomButton {
     width: 7vw;
     height: 4vw;
     font-size: 3vh;
     color: App.$base-black;
 }
 
-
-
-
 %ButtonCollumn {
     display: flex;
-    flex-direction: column;   
-    max-width: fit-content
+    flex-direction: column;
+    max-width: fit-content;
 }
 
-
-
-.CenterPanel{
+.CenterPanel {
     align-items: center;
     //justify-content: center;
     display: flex;
     flex-direction: column;
     width: 5vw;
-    
-    .InfoDisplay{
+
+    .InfoDisplay {
         background-color: App.$base-black;
-        border: 0.10vw solid App.$base-grey;
+        border: 0.1vw solid App.$base-grey;
         max-width: 15vw;
         width: 13vw;
         min-width: 5vw;
         height: 30vh;
-        .Stats{
+        .Stats {
             font-size: 12px;
         }
-        }
     }
-    .TimeLabel{
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-self: center;
-        
+}
+.TimeLabel {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-self: center;
+}
+.TimeForm:focus {
+    outline: none;
+    background: none;
 
-    }
-    .TimeForm:focus {
-        outline: none;
-        background: none;
-
-  
-
-
-    .TimeForm{
+    .TimeForm {
         align-self: center;
         width: 2vw;
         height: 2vw;
@@ -169,43 +147,38 @@
         text-align: center;
         font-size: 2vw;
         cursor: text;
-        
     }
-
-    
 }
-@media (max-width: App.$mobile){
-    .CenterPanel{
+@media (max-width: App.$mobile) {
+    .CenterPanel {
         align-items: center;
         //justify-content: center;
         display: flex;
         flex-direction: column;
         width: 100%;
-        
-        .InfoDisplay{
+
+        .InfoDisplay {
             background-color: App.$base-black;
-            border: 0.10vw solid App.$base-grey;
+            border: 0.1vw solid App.$base-grey;
             width: 22vh;
             min-width: 19vh;
             height: 25vh;
-            .Stats{
+            .Stats {
                 font-size: 12px;
             }
-            }
         }
-        .TimeLabel{
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-self: center;
-            
-    
-        }
-        .TimeForm:focus {
-            outline: none;
-            background: none;
-    
-        .TimeForm{
+    }
+    .TimeLabel {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-self: center;
+    }
+    .TimeForm:focus {
+        outline: none;
+        background: none;
+
+        .TimeForm {
             align-self: center;
             width: 2vh;
             height: 2vw;
@@ -215,8 +188,6 @@
             text-align: center;
             font-size: 11px;
             cursor: text;
-            
         }
-    
-}
+    }
 }

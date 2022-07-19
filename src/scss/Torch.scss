@@ -1,58 +1,57 @@
-@use './App.scss';
+@use "./App.scss";
 
-.Torch{
+.Torch {
     overflow: hidden;
     display: grid;
     align-items: center;
     grid-auto-rows: 33%;
     grid-auto-columns: 9%;
-
 }
 
-.LoadingBar{
+.LoadingBar {
     width: 38vw;
-    background: linear-gradient(90deg, App.$base-brown 0%, App.$base-red 35%, App.$light-red 50%, App.$base-red 65%, App.$base-brown 100%);
+    background: linear-gradient(
+        90deg,
+        App.$base-brown 0%,
+        App.$base-red 35%,
+        App.$light-red 50%,
+        App.$base-red 65%,
+        App.$base-brown 100%
+    );
     padding: 1vw;
     z-index: 10;
     grid-row: 2 / 3;
     grid-column: 1 / 12;
-    
-        // box-shadow: 
+
+    // box-shadow:
     // 0 2px 20px 5px App.$base-red,
     // 0 0 100px 10px App.$base-brown,
     // 0 0 140px 15px App.$base-black
-    
-    
 }
 
-#canvas{
+#canvas {
     grid-row: 2 / 3;
-    grid-column: 7 / 8  ;
+    grid-column: 7 / 8;
     z-index: 90;
 }
 
-
-.BarFrame{
+.BarFrame {
     width: 40vw;
     grid-row: 2 / 3;
     grid-column: 1 / 12;
     z-index: 20;
     fill: App.$base-grey;
-
 }
 
-.Handle{
+.Handle {
     z-index: 100;
     height: 6vw;
     grid-row: 2 / 3;
-    grid-column: 6 / span 7 ;
-
-
+    grid-column: 6 / span 7;
 }
 
-@media (max-width: App.$mobile){
-
-    .Torch{
+@media (max-width: App.$mobile) {
+    .Torch {
         overflow: hidden;
         display: grid;
         align-items: center;
@@ -60,52 +59,51 @@
         grid-auto-rows: 33%;
         grid-auto-columns: 9%;
         //grid-template-columns: 4vw 4vw 4vw 4vw 4vw 4vw  4vw  4vw 4vw 4vw 4vw 4vw;
-    
     }
-    
-    .LoadingBar{
+
+    .LoadingBar {
         width: 38vw;
         min-width: 50vh;
         min-height: 1.3vh;
 
-        background: linear-gradient(90deg, App.$base-brown 0%, App.$base-red 35%, App.$light-red 50%, App.$base-red 65%, App.$base-brown 100%);
+        background: linear-gradient(
+            90deg,
+            App.$base-brown 0%,
+            App.$base-red 35%,
+            App.$light-red 50%,
+            App.$base-red 65%,
+            App.$base-brown 100%
+        );
         padding: 1vw;
         z-index: 10;
         justify-content: center;
         align-content: center;
-        
-            // box-shadow: 
+
+        // box-shadow:
         // 0 2px 20px 5px App.$base-red,
         // 0 0 100px 10px App.$base-brown,
         // 0 0 140px 15px App.$base-black
-        
-        
     }
-    
+
     // #canvas{
     //     grid-row: 2 / 3;
     //     grid-column: 7 / 8  ;
     //     z-index: 90;
     // }
-    
-    
-    .BarFrame{
+
+    .BarFrame {
         width: 40vw;
         min-width: 50vh;
         justify-content: center;
         align-content: center;
         z-index: 20;
-
         fill: App.$base-grey;
-    
     }
-    
-    .Handle{
-        grid-column: 5 /  7 ;
 
+    .Handle {
+        grid-column: 5 / 7;
         z-index: 100;
         width: 15vh;
         height: 9vh;
-    
     }
 }

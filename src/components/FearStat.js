@@ -56,7 +56,6 @@ const FearStat = ({diff, difficulty}) =>{
 
     return(
         <div className="StatBox">
-                <Draggable>
                 <div className="CharacterCreationMenu show">
                 <form>
                     <input type="text" id='name' name="name" placeholder="name" onChange={({target}) => setName(target.value)} value={name} required />
@@ -66,12 +65,9 @@ const FearStat = ({diff, difficulty}) =>{
                     <button onClick={() => {document.querySelector('.CharacterCreationMenu').classList.toggle('show'); setName(''); setStress('')}}> cancel </button>
                 
              </div>
-             </Draggable>
-             <Draggable>
              <div className="CharacterDeletionMenu show">
                  <CharacterList/>
              </div>
-             </Draggable>
             
             {/* <div className='CharList show'>
              <CharacterListBoardOnSelect />

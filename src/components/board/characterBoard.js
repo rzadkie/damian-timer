@@ -2,6 +2,8 @@ import './characterBoard.scss';
 import { useEffect, useState, useContext } from "react";
 import FirebaseContext from '../../context/firebase';
 import styled from 'styled-components';
+import { col} from '../../services/firebase';
+import { onSnapshot } from "firebase/firestore";
 
 const FearBarStyled = styled.div`
 background-color: #8F1B03;
@@ -13,12 +15,14 @@ top: 0%;
 margin-right: 5px;
 `
 const FearBar = ({height}) =>{
-    if (height >= 100){
-        let newHeight = height - 100;
+    if (height >= 100 || height >= 200){
+        let secondHeight = height - 100;
+        let thirdHeight = height - 200;
         return (
         <div className='placeholder'>
         <FearBarStyled height={height}/>
-        <FearBarStyled height={newHeight}/>
+        <FearBarStyled height={secondHeight}/>
+        <FearBarStyled height={thirdHeight}/>
         </div>
         )
 
@@ -40,11 +44,11 @@ const CharacterBoard = ({time, name, stress, difficulty}) =>{
 
     const [stressState, setStressState] = useState(parseInt(stress));
     
-    console.log('diff: ', difficulty);
-    console.log('time: ', time);
-    console.log('stress: ', typeof stress);
+    // console.log('diff: ', difficulty);
+    // console.log('time: ', time);
+    // console.log('stress: ', typeof stress);
     const {firebase} = useContext(FirebaseContext);
-
+    
     const updateStress = async () => {
         try {
             await firebase.firestore().collection("characters").doc(name + 'id').update({
@@ -57,6 +61,16 @@ const CharacterBoard = ({time, name, stress, difficulty}) =>{
      }
     }
 
+    // useEffect(() => {
+    //     const update = onSnapshot(col, snapshot => {
+    //         setStressState(snapshot.doc(name + 'id').get(stress))
+    //     })
+        
+    //     return () => {
+    //         update();
+    //     }
+    // })
+
     console.log(difficulty);
     return(
         <div className="CharacterPanel">
@@ -65,10 +79,10 @@ const CharacterBoard = ({time, name, stress, difficulty}) =>{
             <VerySmallButton onClick={() => {setStressState(stressState -1); updateStress()}}> - </VerySmallButton>
 
             <p>{name}</p>
-            <p>{stressState}</p>
+            <p>{stress}</p>
         </div>
 
-        <FearBar height={stressState}  id='chart'>
+        <FearBar height={stress}  id='chart'>
         
         </FearBar>
 

@@ -8,6 +8,10 @@ width: 3rem;
 height: 2rem;
 color: black;
 cursor: pointer;
+margin: 5px 0px 20px 0px;
+`
+const Text = styled.p`
+margin 10px 5px 10px 0px;
 `
 
 const Character = ({name, stress}) => {
@@ -36,7 +40,7 @@ const Character = ({name, stress}) => {
 
     return (
         <div >
-                <p>{name} {stress}</p> <IncBtn onClick={deleteCharacter}>x</IncBtn>
+                <Text>{name} {stress}</Text> <IncBtn onClick={deleteCharacter}>x</IncBtn>
         </div>
     ) 
 }

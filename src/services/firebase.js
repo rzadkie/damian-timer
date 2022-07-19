@@ -5,7 +5,7 @@ export const col = collection(db, 'characters');
 
 export async function doesUsernameExist(name) {
     const result = await firebase.firestore().collection('characters').where('name', '==', name).get();
-    console.log(result);
+    //console.log(result);
     return result.docs.map((character) => character.data().lenght > 0);
 }
 

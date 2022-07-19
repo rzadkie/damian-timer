@@ -71,7 +71,7 @@ const CharacterBoard = ({time, name, stress, difficulty}) =>{
     //     }
     // })
 
-    console.log(difficulty);
+    //console.log(difficulty);
     return(
         <div className="CharacterPanel">
                     <div className='Info'>

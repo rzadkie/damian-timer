@@ -14,8 +14,8 @@ const CharacterListBoardOnSelect = ({difficulty, time}) =>{
         async function listOfCharacters(){
             const response = await getCharacters();
             setCharacters(response);
-            console.log(typeof response);
-            console.log( response);
+            //console.log(typeof response);
+            //console.log( response);
         }
             const update = onSnapshot(col, snapshot => {
                 setCharacters(snapshot.docs.map(user => ({...user.data()})))
@@ -26,7 +26,7 @@ const CharacterListBoardOnSelect = ({difficulty, time}) =>{
         }
     }, []);
    
-    console.log("diff in charListBoard: ", difficulty);
+    //console.log("diff in charListBoard: ", difficulty);
     return  !characters ? (<Skeleton count={1} height={150}/>) : characters.length > 0 ? (
         <div className="BoardWrapper" >
                     {characters.map((character) =>(

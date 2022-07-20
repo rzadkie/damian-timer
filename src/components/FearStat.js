@@ -62,8 +62,8 @@ const FearStat = ({diff, difficulty}) =>{
             <div className="CharacterManagementMenu show">
                 <div className="CharacterCreationMenu">
                 <form>
-                    <input type="text" id='name' name="name" placeholder="name" onChange={({target}) => setName(target.value)} value={name} required />
-                    <input type="integer" id='stress' name="stress" placeholder="stress" onChange={({target}) => setStress(target.value)} value={stress} required/>
+                    <input type="text" id='name' name="name" placeholder="name" onChange={({target}) => setName(target.value.toLowerCase())} value={name.toLowerCase()} required />
+                    <input type="number" id='stress' name="stress" placeholder="stress" onChange={({target}) => setStress(target.value)} value={stress} required/>
                 </form>
                     <button onClick={handleNewCharacter}> Add </button>
                     <button onClick={() => {document.querySelector('.CharacterCreationMenu').classList.toggle('show'); setName(''); setStress('')}}> cancel </button>

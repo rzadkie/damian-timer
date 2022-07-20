@@ -27,7 +27,7 @@ const CharacterListBoardOnSelect = ({difficulty, time}) =>{
     }, []);
    
     //console.log("diff in charListBoard: ", difficulty);
-    return  !characters ? (<Skeleton count={1} height={150}/>) : characters.length > 0 ? (
+    return  !characters ? (<div><p>Firebase lived up to it's name</p> <Skeleton count={6} height={150}> </Skeleton></div>) : characters.length > 0 ? (
         <div className="BoardWrapper" >
                     {characters.map((character) =>(
 

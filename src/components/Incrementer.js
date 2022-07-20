@@ -140,10 +140,10 @@ const Incrementer = () =>{
         filter: drop-shadow(0px 0px ${time}px #8f1b03);
         }
       80%{
-        filter: drop-shadow(0px 0px 10px ${run ? brown : red});
+        filter: drop-shadow(0px 0px 10px red);
         }
       100%{
-        filter: drop-shadow(0px 0px ${time}px ${run ? black : red}));
+        filter: drop-shadow(0px 0px ${time}px red);
         }    
       `
 
@@ -156,7 +156,8 @@ const Incrementer = () =>{
       color: white;
       background-color: #8f1b03;
       align-self: center;
-      animation: ${glow} ${time}s infinite linear;
+      animation: ${glow} ${time}s linear;
+      animation-iteration-count: infinite;
       `
 
 

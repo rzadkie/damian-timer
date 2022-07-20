@@ -195,11 +195,11 @@ const Incrementer = () =>{
           </div>
         
             <div className="BTNsR">
-              <button className="BigButton" disabled={value === 0} onClick={() => setChange(diffLevel.value[0])}> {diffLevel.value[0]} </button>
-              <button className="BigButton" disabled={value === 0} onClick={() => setValue(clamp(value + diffLevel.value[1]), min, max)}> {diffLevel.value[1]} </button>
-              <button className="BigButton" disabled={value === 0} onClick={() => setValue(clamp(value + diffLevel.value[2]), min, max)}> {diffLevel.value[2]} </button>
-              <button className="BigButton" disabled={value === 0} onClick={() => setValue(clamp(value + diffLevel.value[3]), min, max)}> {diffLevel.value[3]} </button>
-              <button className="BigButton" disabled={value === 100} onClick={() => setValue(clamp(value + diffLevel.value[4]), min, max)}> {diffLevel.value[4]} </button>
+              <button className="BigButton" disabled={value === 0} onClick={() => setValue(value + diffLevel.value[0])}> {diffLevel.value[0]} </button>
+              <button className="BigButton" disabled={value === 0} onClick={() => setValue(value + diffLevel.value[1])}> {diffLevel.value[1]} </button>
+              <button className="BigButton" disabled={value === 0} onClick={() => setValue(value + diffLevel.value[2])}> {diffLevel.value[2]} </button>
+              <button className="BigButton" disabled={value === 0} onClick={() => setValue(value + diffLevel.value[3])}> {diffLevel.value[3]} </button>
+              <button className="BigButton" disabled={value === 100} onClick={() => setValue(value + diffLevel.value[4])}> {diffLevel.value[4]} </button>
             </div>
 
 

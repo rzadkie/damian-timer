@@ -1,47 +1,96 @@
 import react, {useEffect, useState, useContext} from "react";
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import '../scss/FearStat.scss'
 import '../scss/CharacterManagementMenu.scss'
 import FirebaseContext from "../context/firebase";
-import { doesUsernameExist} from "../services/firebase";
-import {doc, addDoc, collection} from 'firebase/firestore';
+import { db, doesUsernameExist, col, grp} from "../services/firebase";
+import {doc, getDoc, addDoc, collection, onSnapshot, getFirestore} from 'firebase/firestore';
+import { firebase, FieldValue } from '../lib/firebase';
 import CharacterList from "./characterList";
+import GroupList from "./groupList";
 import CharacterBoard from "./board/characterBoard";
 import CharacterListBoardOnSelect from "./board/characterListBoardSelect";
-import Draggable from 'react-draggable'; 
 
 
 
-const FearStat = ({diff, difficulty}) =>{
+const FearStat = ({diff, difficulty, groups}) =>{
 
 
-    const [name, setName] = useState('');
+    const [characterName, setCharacterName] = useState('');
+    const [groupName, setGroupName] = useState('');
     const [stress, setStress] = useState('');
     const {firebase} = useContext(FirebaseContext);
     const [error, setError] = useState('');
+    const [characters, setCharacters] = useState(null);
+    const [scope, setScope] = useState();
+    const [xqx, setXqx] = useState();
+
+
+    const selectScope = (name) => {
+        setScope(name);
+        console.log(scope);
+    }
+
+    useEffect(() => {
+        const updateCharacters = onSnapshot(collection(db, 'groups', scope + 'id', 'characters'), snapshot => {
+                setCharacters(snapshot.docs.map(user => ({...user.data()})))
+        })
+
+        return () => {
+            updateCharacters();
+
+        }
+    }, [scope])
 
 
     const handleNewCharacter = async (event) => {
         event.preventDefault();
-        const nameExists = await doesUsernameExist(name);
+        const nameExists = await doesUsernameExist(characterName);
         if (!nameExists.length) {
             try {
                 //let nameid = name.replace(/\s+/g, '');
-                await firebase.firestore().collection("characters").doc(name + 'id').set({
-                    name: name.toLowerCase(),
+                await firebase.firestore().collection("groups").doc(scope + 'id').collection('characters').doc(characterName + 'id').set({
+                    name: characterName.toLowerCase(),
                     stress: stress,
                 });
-                setName('');
+                setCharacterName('');
                 setStress('');
 
             } catch (error) {
-                setName('');
+                setCharacterName('');
                 setStress('');
                 setError(error.message);
             }
         }
         else {
-            setError('That username is already taken')
+            setError('That name is already taken')
+        }
+        try {
+
+        } catch (error) {
+
+        }
+    };
+
+    const handleNewGroup = async (event) => {
+        event.preventDefault();
+        const nameExists = await doesUsernameExist(groupName);
+        if (!nameExists.length) {
+            try {
+                //let nameid = name.replace(/\s+/g, '');
+                await firebase.firestore().collection("groups").doc(groupName + 'id').set({name: groupName});
+                await firebase.firestore().collection("groups").doc(groupName + 'id').collection('characters').doc('tempid').set({
+                    name: 'temp'
+                });
+                setGroupName('');
+
+            } catch (error) {
+                setGroupName('');
+                console.error(error);
+            }
+        }
+        else {
+            setError('That name is already taken')
         }
         try {
 
@@ -61,29 +110,42 @@ const FearStat = ({diff, difficulty}) =>{
             </nav>
             <div className="CharacterManagementMenu show">
                 <div className="CharacterCreationMenu">
+                <h4>Add new Character</h4>
                 <form>
-                    <input type="text" id='name' name="name" placeholder="name" onChange={({target}) => setName(target.value.toLowerCase())} value={name.toLowerCase()} required />
+                    <input type="text" id='name' name="name" placeholder="name" onChange={({target}) => setCharacterName(target.value.toLowerCase())} value={characterName.toLowerCase()} required />
                     <input type="number" id='stress' name="stress" placeholder="stress" onChange={({target}) => setStress(target.value)} value={stress} required/>
                 </form>
+                <div className="FormButtonWrapper">
                     <button onClick={handleNewCharacter}> Add </button>
-                    <button onClick={() => {document.querySelector('.CharacterCreationMenu').classList.toggle('show'); setName(''); setStress('')}}> cancel </button>
+                    <button onClick={() => {document.querySelector('.CharacterCreationMenu').classList.toggle('show'); setCharacterName(''); setStress('')}}> cancel </button>
+                    </div>
                 
              </div>
-             <div className="CharacterDeletionMenu">
-                 <CharacterList/>
+             <div className="GroupCreationMenu">
+                <h4>Add new Party</h4>
+                <form>
+                    <input type="text" id='name' name="name" placeholder="name" onChange={({target}) => setGroupName(target.value.toLowerCase())} value={groupName.toLowerCase()} required />
+                </form>
+                <div className="FormButtonWrapper">
+                    <button onClick={handleNewGroup}> Add </button>
+                    <button onClick={() => {document.querySelector('.CharacterCreationMenu').classList.toggle('show'); setGroupName(''); setStress('')}}> cancel </button>
+                </div>
+                
              </div>
-             <p className="Close" onClick={() => {document.querySelector('.CharacterManagementMenu').classList.toggle('show')}}>x</p>
+             <div className="GroupDeletionMenu">
+                <GroupList groups={groups} scope={selectScope}/>
+
+             </div>
+             <div className="CharacterDeletionMenu">
+                 <CharacterList characters={characters} scope={scope}/>
+             </div>
+             <h5 className="Close" onClick={() => {document.querySelector('.CharacterManagementMenu').classList.toggle('show')}}>x</h5>
              </div>
             
-            {/* <div className='CharList show'>
-             <CharacterListBoardOnSelect />
-            </div> */}
-
-
              <div className="Board">
   
             
-            <CharacterListBoardOnSelect time={diff} difficulty={difficulty}/>
+            <CharacterListBoardOnSelect time={diff} difficulty={difficulty} characters={characters}/>
 
              </div>
 

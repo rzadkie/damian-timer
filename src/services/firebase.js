@@ -1,7 +1,9 @@
 import { onSnapshot, QuerySnapshot, collection, getFirestore } from 'firebase/firestore';
 import { firebase, FieldValue } from '../lib/firebase';
-const db = getFirestore(firebase);
+export const db = getFirestore(firebase);
 export const col = collection(db, 'characters');
+export const grp = collection(db, 'groups');
+export const collection_mechanics = collection(db, 'mechanics');
 
 export async function doesUsernameExist(name) {
     const result = await firebase.firestore().collection('characters').where('name', '==', name).get();

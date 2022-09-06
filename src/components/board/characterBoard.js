@@ -1,9 +1,7 @@
 import './characterBoard.scss';
-import { useEffect, useState, useContext } from "react";
+import { useState, useContext } from "react";
 import FirebaseContext from '../../context/firebase';
 import styled from 'styled-components';
-import { col} from '../../services/firebase';
-import { onSnapshot } from "firebase/firestore";
 
 const FearBarStyled = styled.div`
 background-color: #8F1B03;
@@ -74,9 +72,9 @@ const CharacterBoard = ({time, name, stress, difficulty}) =>{
     //console.log(difficulty);
     return(
         <div className="CharacterPanel">
-                    <div className='Info'>
-            <VerySmallButton onClick={() => {setStressState(stressState +1); updateStress()}}> + </VerySmallButton>
-            <VerySmallButton onClick={() => {setStressState(stressState -1); updateStress()}}> - </VerySmallButton>
+        <div className='Info'>
+            <VerySmallButton onClick={() => {setStressState(stressState + 1); updateStress();}}> + </VerySmallButton>
+            <VerySmallButton onClick={() => {setStressState(stressState - 1); updateStress();}}> - </VerySmallButton>
 
             <p>{name}</p>
             <p>{stress}</p>

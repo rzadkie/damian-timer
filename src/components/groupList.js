@@ -1,0 +1,25 @@
+import {useEffect, useState} from "react";
+
+import Skeleton from 'react-loading-skeleton';
+import { onSnapshot } from "firebase/firestore";
+
+import { grp} from '../services/firebase';
+import Group from "./group";
+
+const GroupList = ({groups, scope}) =>{
+    
+    return  !groups ? (<Skeleton className="CharacterList" count={1} height={150}/>) : groups.length > 0 ? (
+        <div >
+                    {groups.map((group) =>(
+
+                    <Group
+                    key={group.name + Math.random}
+                    name={group.name}
+                    scope = {scope}
+                    />
+                    ))}
+                    
+                </div>
+    ) : null
+}
+export default GroupList;

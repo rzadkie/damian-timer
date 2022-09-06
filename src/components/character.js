@@ -14,7 +14,7 @@ const Text = styled.p`
 margin 10px 5px 10px 0px;
 `
 
-const Character = ({name, stress}) => {
+const Character = ({name, stress, scope, use_case}) => {
 
     const {firebase} = useContext(FirebaseContext);
 
@@ -27,7 +27,7 @@ const Character = ({name, stress}) => {
 
       const deleteCharacter = async () => {
         try {
-            await firebase.firestore().collection("characters").doc(name + 'id').delete().then(() => {
+            await firebase.firestore().collection("groups").doc(scope + 'id').collection('characters').doc(name + 'id').delete().then(() => {
                 console.log("Document successfully deleted!");
             }).catch((error) => {
                 console.error("Error removing document: ", error);
@@ -37,10 +37,16 @@ const Character = ({name, stress}) => {
 
      }
     }
-
+    
+    const selectUseCase = () => ({
+        game_master_menu: <div > <Text>{name} {stress}</Text> <IncBtn onClick={deleteCharacter}>x</IncBtn> </div>,
+        player_select_menu: <div > <Text>{name}</Text> </div>,
+        player_menu: <div > <Text>{name} {stress}</Text> </div>,
+    })
+    console.log(name)
     return (
-        <div >
-                <Text>{name} {stress}</Text> <IncBtn onClick={deleteCharacter}>x</IncBtn>
+        <div>
+            {selectUseCase()[use_case]}
         </div>
     ) 
 }

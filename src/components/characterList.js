@@ -4,7 +4,7 @@ import Skeleton from 'react-loading-skeleton';
 import { onSnapshot } from "firebase/firestore";
 
 import { getCharacters, col} from '../services/firebase';
-import Character from "./character";
+import Character from "./character/character";
 
 const CharacterList = ({characters, scope}) =>{
 

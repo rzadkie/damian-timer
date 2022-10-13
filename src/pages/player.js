@@ -1,42 +1,26 @@
 import '../scss/Player.scss';
-import { useEffect, useState } from 'react';
+import React, {Suspense ,useEffect, useState } from 'react';
 import { db } from "../services/firebase";
 import {collection, onSnapshot} from 'firebase/firestore';
-import Character from '../components/character';
 import Skeleton from 'react-loading-skeleton';
-
+import Loader from '../components/loader';
 
 
 const Player = () => {
-    const [characters, setCharacters] = useState(false);
+    const [characters, setCharacters] = useState([]);
+    const [group, setGroup] = useState([]);
     const [active, setActive] = useState(false);
-    const [charactersArr, setCharactersArr] = useState();
 
-    let CharCl = class {
-        constructor(man){
-            this.man = man;
-        }
-
-        mapThisShit(){
-            let osm = [];
-            this.man.map(mann => (osm.push(mann)));
-            return osm;
-        }
-    }
 
     useEffect(() => {
-        let groupArr = [];
-        let charArr = [];
         const getCharacters = onSnapshot(collection(db, 'groups'), snapshot => {
-            groupArr = snapshot.docs.map(group => ({...group.data()}));
-            for (let i=0; i<groupArr.length; i++) {
-                onSnapshot(collection(db, 'groups', groupArr[i].name + 'id', 'characters'), snapshot => {
-                    snapshot.docs.map(user => (charArr.push(user.data())));
+            setGroup(snapshot.docs.map(group => ({...group.data()})));
+            for (let i=0; i<group.length; i++) {
+                onSnapshot(collection(db, 'groups', group[i].name + 'id', 'characters'), snapshot => {
+                    snapshot.docs.map(user => (characters.push(user.data())));
 
-                  })
-                  
+                  })                
                 }
-                setCharacters(charArr);
                 setActive(true);
             }
              
@@ -47,33 +31,27 @@ const Player = () => {
         return () => {
             getCharacters();      
   }
-}, [])
-
-console.log(characters);
-
-    return active ?
-        <div className="Container" >
-        {characters.map((character) =>(
-        console.log(character)
-
-
-
-        ))}
-        
-    </div>
-    : 
-    <p>xq</p>
-     
+}, [active])
     
+    const LazyList = React.lazy(() => {
+        return new Promise (resolve => setTimeout (resolve, 1000)).then(() => import('../components/player/list'));
+    });
+
+    return  (
+
+            <div className='Container'>
+            {!group ? (<Skeleton count={6} height={150}> </Skeleton>) : group.length > 0 ?
+            (
+                <div>
+                <Suspense fallback={<Loader/>}>
+                <LazyList characters={characters}/>
+
+                </Suspense>
+                </div>               
+        
+            ) : null}
+            </div>        
+        
+)  
 }
 export default Player;
-
-// character.map(player => {
-//     <Character
-//       name={player.name}
-//       use_case='player_select_menu'
-//       key={player.length+Math.random()}
-//     />
-//   })
-
-

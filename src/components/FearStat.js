@@ -52,6 +52,7 @@ const FearStat = ({diff, difficulty, groups}) =>{
                 await firebase.firestore().collection("groups").doc(scope + 'id').collection('characters').doc(characterName + 'id').set({
                     name: characterName.toLowerCase(),
                     stress: stress,
+                    group: scope,
                 });
                 setCharacterName('');
                 setStress('');

@@ -6,6 +6,7 @@ import GameMaster from './pages/game-master';
 import LandingPage from './pages/landingpage';
 import NotFound from './pages/notfound';
 import Player from './pages/player';
+import PlayerSheet from './pages/player_sheet';
 
 //const NotFound = lazy(() => import("./pages/notfound"));
 //const GameMaster = lazy(() => import("./pages/game-master"));
@@ -14,17 +15,16 @@ import Player from './pages/player';
 function App() {
 
   return (
-    <BrowserRouter>
       <Suspense fallback={<p> loading... </p>}>
         <Routes>
-          <Route path={ROUTES.GAME_MASTER} element={<GameMaster/>} exact/>
-          <Route path={ROUTES.LANDING} element={<LandingPage/>} exact/>
-          <Route path={ROUTES.PLAYER} element={<Player/>} exact/>
+          <Route path={ROUTES.GAME_MASTER} element={<GameMaster/>} />
+          <Route path={ROUTES.LANDING} element={<LandingPage/>} />
+          <Route path={ROUTES.PLAYER} element={<Player/>}/>
+          <Route path={ROUTES.PLAYER_SHEET} element={<PlayerSheet/>}/>
           <Route element={<NotFound/>}/>
 
         </Routes>
       </Suspense>
-    </BrowserRouter>
   )
 }
 

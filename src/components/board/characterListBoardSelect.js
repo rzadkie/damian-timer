@@ -14,6 +14,7 @@ const CharacterListBoardOnSelect = ({difficulty, time, characters}) =>{
                     <CharacterBoard
                     key={character.name + Math.random}
                     name={character.name}
+                    group={character.group}
                     stress={character.stress}
                     difficulty={difficulty}
                     time={time}

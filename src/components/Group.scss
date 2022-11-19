@@ -1,0 +1,9 @@
+@use '../scss/App.scss';
+
+.Group{
+
+}
+
+.Group:active{
+    background-color: lighten($color: App.$base-black, $amount: 20%);
+}

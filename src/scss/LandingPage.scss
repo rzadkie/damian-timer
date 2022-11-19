@@ -1,0 +1,40 @@
+@use './App.scss';
+
+.Container{
+    background-color: App.$base-black;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    place-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    h1{
+        margin: 0;
+        color: white;
+    }
+    .ButtonContainer{
+        display: flex;
+        margin-top: 30px;
+        a{
+            color: white;
+            text-decoration: none;
+        }
+        .Button{
+            margin: 10px;
+            display: flex;
+            width: 12rem;
+            height: 3.1rem;
+            border: 1px App.$base-orange solid;
+            place-content: center;
+            align-items: center;
+        }
+        .Button:hover{
+            background-color: lighten($color: App.$base-orange, $amount: 5%);
+        }
+        .Button:active{
+            transform: scale(90%);
+        }
+    }
+
+}

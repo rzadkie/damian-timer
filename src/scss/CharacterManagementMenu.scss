@@ -1,16 +1,22 @@
 @use "./App.scss";
-.CharacterManagementMenu{
+.CharacterManagementMenu {
   place-self: center;
   position: fixed;
-  top: 40%;
-  display: flex;
-  width: 30vw;
-  height: 20vw;
+  top: 20%;
+  display: grid;
+  grid-template-rows: repeat(auto-fill, 50%);
+  grid-template-columns: repeat(auto-fill, 20%);
+  width: 40vw;
+  height: 30rem;
   z-index: 40;
   background-color: App.$base-black;
   border: 1px solid App.$base-orange;
   justify-content: space-evenly;
 
+  h4 {
+    font-size: 24px;
+    margin: 10px;
+  }
 
   .Close {
     position: absolute;
@@ -18,93 +24,130 @@
     top: 0;
     margin: 0;
     right: 2%;
+  }
 
-}
+  .FormButtonWrapper {
+    height: 50%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    button {
+      width: 4vw;
+      height: 2vw;
+    }
+  }
 
-    .CharacterDeletionMenu {
-        //min-width: 10vw;
-        //min-height: 5vw;
-        background-color: App.$base-black;
-        border: 1px solid App.$base-orange;
-        display: flex;
-        flex-direction: row;
-        z-index: 20;
-        width: 10vw;
-        place-content: center;
-      
-        overflow-y: scroll;
-        max-height: 50em;
-      }
-      
-      
-      .CharacterDeletionMenu::-webkit-scrollbar {
-        width: 5px;
-      }
-      
-      .CharacterDeletionMenu::-webkit-scrollbar-track {
-        background: none;
-      }
-      
-      .CharacterDeletionMenu::-webkit-scrollbar-thumb {
-        background: App.$base-orange;
-      }
-      
-      .CharacterDeletionMenu::-webkit-scrollbar-thumb:hover {
-        background: App.$dark-orange;
-      }
-      
-      .CharacterCreationMenu {
-        form{
-          width: 20vw;
-          height: 10vw;
-          input{
-            border: 1px solid App.$base-orange;
-            width: 10vw;
-          }
-        }
-        button{
-          width: 4vw;
-          height: 2vw;
-        }
-          justify-content: flex-start;
-          align-items: center;
-          display: flex;
-          //min-width: 10vw;
-          //min-height: 5vw;
-          background-color: App.$base-black;
-          border: 1px solid App.$base-orange;
-          flex-direction: column;
-          width: 20vw;
-          z-index: 20;
-      
+  .CharacterDeletionMenu {
+    //min-width: 10vw;
+    //min-height: 5vw;
+    background-color: App.$base-black;
+    border: 1px solid App.$base-orange;
+    display: flex;
+    flex-direction: row;
+    z-index: 20;
+    width: fit-content;
+    place-content: center;
+    grid-row: 1 / 3;
+    grid-column: 5 / 6;
+    overflow-y: scroll;
+    max-height: 50em;
+    width: 100%;
+    height: 100%;
+  }
 
-      }
-      
+  .CharacterDeletionMenu::-webkit-scrollbar {
+    width: 5px;
+  }
 
-      
-      @media (max-width: App.$mobile) {
-          .CharacterCreationMenu {
-              display: flex;
-              position: fixed;
-              right: 45%;
-              bottom: 15%;
-              //min-width: 10vw;
-              //min-height: 5vw;
-              background-color: App.$base-black;
-              border: 1px solid App.$base-orange;
-              display: flex;
-              flex-direction: row;
-              z-index: 20;
-      
-              .Close {
-                  position: fixed;
-                  justify-self: left;
-              }
-          }
-      
+  .CharacterDeletionMenu::-webkit-scrollbar-track {
+    background: none;
+  }
 
+  .CharacterDeletionMenu::-webkit-scrollbar-thumb {
+    background: App.$base-orange;
+  }
+
+  .CharacterDeletionMenu::-webkit-scrollbar-thumb:hover {
+    background: App.$dark-orange;
+  }
+
+  .CharacterCreationMenu {
+    form {
+      display: flex;
+      flex-direction: column;
+      height: 50%;
+      input {
+        border-bottom: 1px solid App.$base-orange;
+        border-top: 1px solid App.$base-orange;
+        width: 99%;
+        padding: none;
       }
-      
+    }
+
+    grid-row: 1 / 2;
+    grid-column: 1 / 3;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    //min-width: 10vw;
+    //min-height: 5vw;
+    background-color: App.$base-black;
+    border-right: 1px solid App.$base-orange;
+    border-bottom: 1px solid App.$base-orange;
+    width: 100%;
+    height: 100%;
+    z-index: 20;
+  }
+  .GroupCreationMenu {
+    grid-row: 2 / 3;
+    grid-column: 1 / 3;
+    border-right: 1px solid App.$base-orange;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    form {
+      display: flex;
+      flex-direction: column;
+      height: 50%;
+      input {
+        border-bottom: 1px solid App.$base-orange;
+        border-top: 1px solid App.$base-orange;
+
+        width: 99%;
+        padding: none;
+      }
+    }
+  }
+  .GroupDeletionMenu {
+    grid-row: 1 / 3;
+    grid-column: 3 / 5;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+  }
+
+  @media (max-width: App.$mobile) {
+    .CharacterCreationMenu {
+      display: flex;
+      position: fixed;
+      right: 45%;
+      bottom: 15%;
+      //min-width: 10vw;
+      //min-height: 5vw;
+      background-color: App.$base-black;
+      border: 1px solid App.$base-orange;
+      display: flex;
+      flex-direction: row;
+      z-index: 20;
+
+      .Close {
+        position: fixed;
+        justify-self: left;
+      }
+    }
+  }
 }
 .show {
   display: none;

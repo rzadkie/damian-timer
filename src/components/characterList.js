@@ -4,28 +4,12 @@ import Skeleton from 'react-loading-skeleton';
 import { onSnapshot } from "firebase/firestore";
 
 import { getCharacters, col} from '../services/firebase';
-import Character from "./character";
+import Character from "./character/character";
 
-const CharacterList = () =>{
+const CharacterList = ({characters, scope}) =>{
 
     
-    const [characters, setCharacters] = useState(null);
 
-    useEffect(() => {
-        async function listOfCharacters(){
-            const response = await getCharacters();
-            setCharacters(response);
-
-        }
-        const update = onSnapshot(col, snapshot => {
-            setCharacters(snapshot.docs.map(user => ({...user.data()})))
-        })
-
-    return () => {
-        update();
-    }
-}, []);
-   
     return  !characters ? (<Skeleton className="CharacterList" count={1} height={150}/>) : characters.length > 0 ? (
         <div >
                     {characters.map((character) =>(
@@ -34,6 +18,8 @@ const CharacterList = () =>{
                     key={character.name + Math.random}
                     name={character.name}
                     stress={character.stress}
+                    scope={scope}
+                    use_case='game_master_menu'
                     />
                     ))}
                     

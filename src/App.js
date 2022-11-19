@@ -1,60 +1,31 @@
 import './scss/App.scss';
-import Timer from './components/Timer';
-import Soundboard from './components/Soundboard';
-import Incrementer from './components/Incrementer';
-import React ,{ useState } from 'react';
-import styled from 'styled-components';
+import React ,{ useState, Suspense, lazy } from 'react';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import * as ROUTES from './constants/routes';
+import GameMaster from './pages/game-master';
+import LandingPage from './pages/landingpage';
+import NotFound from './pages/notfound';
+import Player from './pages/player';
+import PlayerSheet from './pages/player_sheet';
 
-const Tab = styled.button`
-padding: 10px 20px;
-cursor: pointer;
-opacity: 0.6;
-border: 0;
-outline: 0;
-color: white;
+//const NotFound = lazy(() => import("./pages/notfound"));
+//const GameMaster = lazy(() => import("./pages/game-master"));
 
-${({ active }) =>
-  active &&
-  `
-  border-bottom: 2px solid white;
-  opacity: 1;
-  color: #d19f49;
-  border-color: #d19f49;
-  `}`;
 
 function App() {
-  const types = ['Timer', 'Soundboard', 'Incrementer'];  
-  const [isActive, setActive] = useState(types[0]);
-
- 
 
   return (
+      <Suspense fallback={<p> loading... </p>}>
+        <Routes>
+          <Route path={ROUTES.GAME_MASTER} element={<GameMaster/>} />
+          <Route path={ROUTES.LANDING} element={<LandingPage/>} />
+          <Route path={ROUTES.PLAYER} element={<Player/>}/>
+          <Route path={ROUTES.PLAYER_SHEET} element={<PlayerSheet/>}/>
+          <Route element={<NotFound/>}/>
 
-    <div className="App">
-
-      <div className="AppInterface">
-        
-      {types.map(type => (
-        <Tab
-        className='SmallButton'
-        key={type}
-        active={isActive === type}
-        onClick={() => setActive(type)}
-          >
-            {type}
-          </Tab>
-        ))}
-      </div>
-
-      {
-        {
-          'Timer': <Timer/>,
-          'Soundboard': <Soundboard/>,
-          'Incrementer': <Incrementer/>
-        }[isActive]
-      }     
-      </div>  
-  );
+        </Routes>
+      </Suspense>
+  )
 }
 
 export default App;

@@ -1,2 +1,14 @@
 @use './App.scss';
 
+//SHEET
+.AvatarContainer{
+    border: 1px white solid;
+    width: 20rem;
+    height: 20rem;
+    padding: 0.15rem;
+    .Avatar{
+        //border: 1px white solid;
+        width: 20rem;
+        height: 20rem;
+    }
+}

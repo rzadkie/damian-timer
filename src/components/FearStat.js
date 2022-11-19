@@ -19,6 +19,7 @@ const FearStat = ({diff, difficulty, groups}) =>{
     const [characterName, setCharacterName] = useState('');
     const [groupName, setGroupName] = useState('');
     const [stress, setStress] = useState('');
+    const [avatarUrl, setAvatarUrl] = useState('');
     const {firebase} = useContext(FirebaseContext);
     const [error, setError] = useState('');
     const [characters, setCharacters] = useState(null);
@@ -53,13 +54,17 @@ const FearStat = ({diff, difficulty, groups}) =>{
                     name: characterName.toLowerCase(),
                     stress: stress,
                     group: scope,
+                    avatar_url: avatarUrl ? avatarUrl : null,
                 });
                 setCharacterName('');
                 setStress('');
+                setAvatarUrl('');
+                
 
             } catch (error) {
                 setCharacterName('');
                 setStress('');
+                setAvatarUrl('');
                 setError(error.message);
             }
         }
@@ -113,8 +118,10 @@ const FearStat = ({diff, difficulty, groups}) =>{
                 <div className="CharacterCreationMenu">
                 <h4>Add new Character</h4>
                 <form>
-                    <input type="text" id='name' name="name" placeholder="name" onChange={({target}) => setCharacterName(target.value.toLowerCase())} value={characterName.toLowerCase()} required />
-                    <input type="number" id='stress' name="stress" placeholder="stress" onChange={({target}) => setStress(target.value)} value={stress} required/>
+                    <input type="text" id='name' name="name" placeholder="name*" onChange={({target}) => setCharacterName(target.value.toLowerCase())} value={characterName.toLowerCase()} required />
+                    <input type="number" id='stress' name="stress" placeholder="stress*" onChange={({target}) => setStress(target.value)} value={stress} required/>
+                    <input type="text" id='name' name="name" placeholder="avatar url" onChange={({target}) => setAvatarUrl(target.value.toLowerCase())} value={avatarUrl.toLowerCase()} />
+
                 </form>
                 <div className="FormButtonWrapper">
                     <button onClick={handleNewCharacter}> Add </button>

@@ -17,7 +17,8 @@ margin 10px 5px 10px 0px;
 
 
 
-const Group = ({name, scope}) => {
+const Group = ({name, scope, isSelected, onSelect}) => {
+    const [st, setSt] = useState(isSelected);
     const {firebase} = useContext(FirebaseContext);
 
       const deleteGroup = async () => {
@@ -32,11 +33,16 @@ const Group = ({name, scope}) => {
 
      }
     }
-
+    const Group = st ? styled.div`
+    background-color: #550900;`
+    :
+    styled.div`
+    background-color: #090100;`
+    
     return (
-        <div className="Group" onClick={() => scope(name)}>
+        <Group onClick={() => {scope(name); onSelect();}}>
                 <Text>{name} </Text> <IncBtn onClick={deleteGroup}>x</IncBtn>
-        </div>
+        </Group>
     ) 
 }
 export default Group;

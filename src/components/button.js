@@ -1,5 +1,4 @@
 import react from "react"
-import {ReactComponent as Comp } from '../Component2.svg';
 import styled from "styled-components";
 import { useState } from "react";
 

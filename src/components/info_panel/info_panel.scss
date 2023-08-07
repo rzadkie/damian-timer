@@ -1,0 +1,23 @@
+@use "../../scss/App.scss";
+
+    .InfoDisplay {
+        display: flex;
+        flex-direction: column;
+        background: radial-gradient(circle, App.$base-black, rgba(252,70,107,0) 150%);
+        border: 0.1vw solid App.$base-grey;
+        border-top: none;
+        border-bottom: none;
+        width: 15vw;
+        min-width: 5vw;
+        height: 30rem;
+        font-size: 28px;
+        align-items: center;
+
+        p{
+            
+        }
+
+        .Stats {
+            font-size: 12px;
+        }
+    }

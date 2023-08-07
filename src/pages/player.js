@@ -42,7 +42,7 @@ const Player = () => {
             <div className='Container'>
             {!group ? (<Skeleton count={6} height={150}> </Skeleton>) : group.length > 0 ?
             (
-                <div>
+                <div className='ListWrapper'>
                 <Suspense fallback={<Loader/>}>
                 <LazyList characters={characters}/>
 

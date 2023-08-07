@@ -1,9 +1,15 @@
 @use '../scss/App.scss';
 
 .Group{
+    display: flex;
+    place-items: center;
+    flex-direction: column;
+    
 
 }
 
+
+
 .Group:active{
-    background-color: lighten($color: App.$base-black, $amount: 20%);
+    //background-color: lighten($color: App.$base-black, $amount: 20%);
 }

@@ -2,15 +2,46 @@ $base-brown: #150d02;
 $base-orange: #e65616;
 $dark-orange: #b34211;
 $base-red: #8f1b03;
+$dark-red: #130101;
+$base-red-opacity-30: #8f1a0356;
 $light-red: #d33a13;
 $base-grey: #787878;
 $base-black: #090100;
+$base-black-opacity-30: #0901004D;
+$base-black-but-lighter-opacity-30-hover: #221a194D;
+$base-black-opacity-30-grey-inverse-opacity-30: #6b67664d;
+$base-black-opacity-30-grey-inverse-opacity-30-hover: #9d99994d;
 $black-black: #000000;
 $base-yellow: #d19f49;
 
 $desktop: 1280px;
 $mobile-big: 768px 1280px;
 $mobile: 768px;
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap');
+
+
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $base-grey;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: $base-grey;
+}
+::-webkit-resizer{
+  display: none;
+}
+::-webkit-scrollbar-corner{
+  display: none;
+}
 
 input {
   background: none;
@@ -54,6 +85,7 @@ select:-webkit-autofill:focus {
   align-items: center;
   font-size: 3vh;
   color: white;
+  font-family: 'Cinzel Decorative', cursive;
 
   .AppInterface {
     display: flex;
@@ -67,7 +99,52 @@ select:-webkit-autofill:focus {
       background: transparent;
     }
   }
+
+
+  .DelBtn{
+    display: flex;
+    position: relative;
+    place-items: center;
+    width: 3rem;
+    height: 2rem;
+    cursor: pointer;
+    margin: 5px 0px 20px 0px;
+    align-items: center;
+    justify-content: center;
 }
+
+.DelBtn::before{
+    content: '';
+    display: block;
+    border-bottom: 1px solid $base-grey;
+    width: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    -webkit-transition: 1s ease;
+    transition: 1s ease;
+}
+.DelBtn:hover::before{
+    width: 100%;
+}
+
+.DelBtn::after{
+    content: '';
+    display: block;
+    border-bottom: 1px solid $base-grey;
+    width: 0;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    -webkit-transition: 1s ease;
+    transition: 1s ease;
+}
+.DelBtn:hover::after{
+    width: 100%;
+}
+}
+
+
 
 @media (max-width: $mobile) {
   input {
@@ -89,6 +166,8 @@ select:-webkit-autofill:focus {
     align-items: center;
     font-size: 2vh;
     color: white;
+    font-family: 'Cinzel Decorative', cursive;
+
 
     .AppInterface {
       display: flex;

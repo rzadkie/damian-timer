@@ -1,13 +1,17 @@
 @use './App.scss';
 
 .Container{
-    background-color: App.$base-black;
+    font-family: 'Cinzel Decorative', cursive;
+    //background: radial-gradient(circle, App.$base-black, rgba(252,70,107,0));
+    
+    background: radial-gradient(circle, App.$base-black, App.$black-black);
     width: 100vw;
     height: 100vh;
     display: flex;
     place-content: center;
     align-items: center;
     flex-direction: column;
+    overflow: scroll;
     color: white;
     h1{
         margin: 0;

@@ -1,5 +1,5 @@
-import { onSnapshot, QuerySnapshot, collection, getFirestore } from 'firebase/firestore';
-import { firebase, FieldValue } from '../lib/firebase';
+import {  collection, getFirestore } from 'firebase/firestore';
+import { firebase } from '../lib/firebase';
 export const db = getFirestore(firebase);
 export const col = collection(db, 'characters');
 export const grp = collection(db, 'groups');

@@ -4,7 +4,6 @@ import CharacterBoard from "./characterBoard";
 
 const CharacterListBoardOnSelect = ({difficulty, time, characters}) =>{
 
-    
 
     //console.log("diff in charListBoard: ", difficulty);
     return  !characters ? (<div><p>Firebase lived up to it's name</p> <Skeleton count={6} height={150}> </Skeleton></div>) : characters.length > 0 ? (

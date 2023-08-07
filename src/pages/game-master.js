@@ -23,8 +23,8 @@ ${({ active }) =>
   `}`;
 
 function GameMaster() {
-  const types = ['Timer', 'Soundboard', 'Incrementer'];  
-  const [isActive, setActive] = useState(types[0]);
+  const types = ['Incrementer', 'Timer', 'Soundboard'];  
+  const [isActive, setActive] = useState('Incrementer');
 
  
 
@@ -38,8 +38,9 @@ function GameMaster() {
         <Tab
         className='SmallButton'
         key={type}
+        disabled={true}
         active={isActive === type}
-        onClick={() => setActive(type)}
+        //onClick={() => setActive(type)}
           >
             {type}
           </Tab>

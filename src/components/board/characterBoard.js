@@ -1,7 +1,7 @@
 import './characterBoard.scss';
 import { useState, useContext } from "react";
 import FirebaseContext from '../../context/firebase';
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 
 const FearBarStyled = styled.div`
 background-color: #8F1B03;
@@ -27,15 +27,74 @@ const FearBar = ({height}) => {
     }
     else{
         return (<div className='placeholder'> <FearBarStyled height={height}/> </div>)
-
     }
-
 };
 
+const StressP = styled.p`
+    color: ${props => props.theme.main};
+`
+StressP.defaultProps = {
+    theme: {
+        main: 'green'
+    }
+};
+
+const bothered = {
+    main: 'yellow'
+};
+
+const stressed = {
+    main: 'red'
+}
+;
+
+const StressMeter = ({stress}) => {
+    if (stress >= 300){
+        return(
+            <ThemeProvider theme={stressed}>
+                <StressP> {stress} </StressP>
+            </ThemeProvider>
+        )
+    }
+    if (stress >= 200)
+    {
+        return(
+            <ThemeProvider theme={bothered}>
+                <StressP> {stress} </StressP>
+            </ThemeProvider>
+        )
+    }
+    return(
+            <StressP> {stress} </StressP>
+    )
+}
+
+const IncreseStressChevron = (props) => (
+    <svg className='Chevron' width="24" height="24" fill="none" viewBox="0 0 24 24">
+        <path stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.25 14.25L12 10.75L8.75 14.25"/>
+    </svg>
+)
+
+const DecreseStressChevron = (props) => (
+    <svg className='Chevron' width="24" height="24" fill="none" viewBox="0 0 24 24">
+        <path stroke="#fafafa" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.25 10.75L12 14.25L8.75 10.75"/>
+    </svg>
+)
+
 const VerySmallButton = styled.button`
+display: flex;
+place-items: center;
+background: transparent;
 margin: 2px;
 width: 30px;
 height: 30px;
+overflow: hidden;
+border: none;
+cursor: pointer;
+:hover{
+    //border: 1px solid #fafafa;
+
+}
 `
 
 const CharacterBoard = ({time, group, name, stress, difficulty}) =>{
@@ -59,32 +118,19 @@ const CharacterBoard = ({time, group, name, stress, difficulty}) =>{
      }
     }
 
-    // useEffect(() => {
-    //     const update = onSnapshot(col, snapshot => {
-    //         setStressState(snapshot.doc(name + 'id').get(stress))
-    //     })
-        
-    //     return () => {
-    //         update();
-    //     }
-    // })
+    console.log(group);
 
-    //console.log(difficulty);
     return(
         <div className="CharacterPanel">
         <div className='Info'>
-            <VerySmallButton onClick={() => {setStressState(stressState + 1); updateStress()}}> + </VerySmallButton>
-            <VerySmallButton onClick={() => {setStressState(stressState - 1); updateStress();}}> - </VerySmallButton>
+            <VerySmallButton onClick={() => {setStressState(stressState + 1); updateStress(); console.log(stressState)}}> <IncreseStressChevron/> </VerySmallButton>
+            <VerySmallButton onClick={() => {setStressState(stressState - 1); updateStress(); console.log(stressState)}}> <DecreseStressChevron/> </VerySmallButton>
 
             <p>{name}</p>
-            <p>{stress}</p>
+            <StressMeter stress={stress}/>
         </div>
 
-        <FearBar height={stress}  id='chart'>
-        
-        </FearBar>
-
-
+        <FearBar height={stress}  id='chart'/>
 
         </div>
     )

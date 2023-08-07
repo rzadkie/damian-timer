@@ -7,9 +7,11 @@ import { grp} from '../services/firebase';
 import Group from "./group";
 
 const GroupList = ({groups, scope}) =>{
-    const [select, setSelect] = useState(false);
+    const [isSelected, setSelected] = useState();
 
-    console.log(select);
+    const act = (name) => {
+        setSelected(name)
+    }
 
     
     return  !groups ? (<Skeleton className="CharacterList" count={1} height={150}/>) : groups.length > 0 ? (
@@ -17,11 +19,11 @@ const GroupList = ({groups, scope}) =>{
                     {
                     groups.map((group) =>(
                     <Group
-                    key={group.name + Math.random}
+                    key={group.name}
                     name={group.name}
-                    scope = {scope}
-                    isSelected={select === true}
-                    onSelect={() => setSelect(!select)}
+                    scope={scope}
+                    active={act}
+                    select={isSelected === group.name}
                     />
                     ))}
                     

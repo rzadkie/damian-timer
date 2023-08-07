@@ -8,6 +8,14 @@
     height: 100px;
 }
 
+.Chevron{
+    scale: 3;
+}
+
+.Chevron:hover{
+    scale: 3.5;
+}
+
 .Info {
     display: flex;
     align-items: center;

@@ -1,17 +1,21 @@
 @use "./App.scss";
+
+
 .CharacterManagementMenu {
   place-self: center;
   position: fixed;
-  top: 20%;
+  top: 15%;
   display: grid;
   grid-template-rows: repeat(auto-fill, 50%);
   grid-template-columns: repeat(auto-fill, 20%);
-  width: 40vw;
-  height: 30rem;
-  z-index: 40;
-  background-color: App.$base-black;
-  border: 1px solid App.$base-orange;
+  width: 80rem;
+  height: 40rem;
+  z-index: 100;
+  background: rgba(0,0,0,0.8);
+  backdrop-filter: blur(7px);
+  border: 1px solid App.$base-grey;
   justify-content: space-evenly;
+  //box-shadow: inset 0 0 0 200px rgba(7, 7, 7, 0.08);
 
   h4 {
     font-size: 24px;
@@ -19,11 +23,22 @@
   }
 
   .Close {
+    width: 2rem;
+    height: 2rem;
     position: absolute;
+    border-radius: 50%;
     z-index: 21;
-    top: 0;
-    margin: 0;
-    right: 2%;
+    top: 0%;
+    //margin: 0;
+    right: 0%;
+    stroke: white;
+    cursor: pointer;
+
+  }
+
+  .Close:hover{
+    stroke: darken(white, 25);
+
   }
 
   .FormButtonWrapper {
@@ -41,8 +56,8 @@
   .CharacterDeletionMenu {
     //min-width: 10vw;
     //min-height: 5vw;
-    background-color: App.$base-black;
-    border: 1px solid App.$base-orange;
+    //background-color: App.$base-black;
+    border-left: 1px solid App.$base-grey;
     display: flex;
     flex-direction: row;
     z-index: 20;
@@ -56,33 +71,118 @@
     height: 100%;
   }
 
-  .CharacterDeletionMenu::-webkit-scrollbar {
-    width: 5px;
-  }
-
-  .CharacterDeletionMenu::-webkit-scrollbar-track {
-    background: none;
-  }
-
-  .CharacterDeletionMenu::-webkit-scrollbar-thumb {
-    background: App.$base-orange;
-  }
-
-  .CharacterDeletionMenu::-webkit-scrollbar-thumb:hover {
-    background: App.$dark-orange;
-  }
 
   .CharacterCreationMenu {
     form {
       display: flex;
       flex-direction: column;
       height: 50%;
-      input {
-        border-bottom: 1px solid App.$base-orange;
-        border-top: 1px solid App.$base-orange;
-        width: 99%;
-        padding: none;
+      width: 80%;
+      #name{
+        //border-left: 1px solid App.$base-grey;
+
       }
+      #stress{
+        //border-left: 1px solid App.$base-grey;
+        //border-bottom: 1px solid App.$base-grey;
+
+      }
+      
+      #avatar_url{
+        //border-left: 1px solid App.$base-grey;
+        
+      }
+      input {
+        height: 2rem;
+        position: relative;
+        width: 100%;
+        padding-bottom: 0px;
+        transition: 0.3s ease;
+        background: transparent;
+        z-index: 50;
+
+
+      }
+      .inputWrapper{
+        position: relative;
+        height: 2.4rem;
+        z-index: auto;
+
+
+
+
+      }
+      .inputWrapper::after{
+        content: '';
+        display: block;
+        border-left: 1px solid App.$base-grey;
+        height: 0;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        -webkit-transition: height 1s ease;
+        transition: height 1s ease;
+      }
+      .inputWrapper:hover::after{
+        content: '';
+        height: 50%;
+      }
+      .inputWrapper::before{
+
+        content: '';
+        display: block;
+        border-bottom: 1px solid App.$base-grey;
+        width: 50%;
+        border-right: 1px solid App.$base-grey;
+        height: 0;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        -webkit-transition: 1s ease;
+        transition: 1s ease;
+        z-index: auto;
+      }
+      .inputWrapper:hover::before{
+        z-index: auto;
+
+        content: '';
+        width: 101%;
+        height: 50%;
+      }
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      input[type=number] {
+        -moz-appearance: textfield;
+      }
+      :focus-visible{
+        //outline: 1px solid rgba(255, 255, 255, 0.15);
+        outline: none;
+        //background-color: transparentize(App.$base-red, 0.7);
+        
+      }
+
+
+      
+      // input:-webkit-autofill,
+      // input:-webkit-autofill:hover,
+      // input:-webkit-autofill:focus,
+      // input:-webkit-autofill:active{
+      //   -webkit-box-shadow: 0 0 0 1000px transparentize(App.$base-red, 0.7) inset;
+      //   -webkit-text-fill-color: white;
+
+      // }
+
+      // input:-webkit-autofill,
+      // input:-webkit-autofill:focus {
+      //   transition: background-color 600000s 0s, color 600000s 0s;
+      // }
+      // input[data-autocompleted] {
+      //   background-color: transparent !important;
+      // }
+
     }
 
     grid-row: 1 / 2;
@@ -92,9 +192,9 @@
     flex-direction: column;
     //min-width: 10vw;
     //min-height: 5vw;
-    background-color: App.$base-black;
-    border-right: 1px solid App.$base-orange;
-    border-bottom: 1px solid App.$base-orange;
+    //background-color: App.$base-black;
+    border-right: 1px solid App.$base-grey;
+    border-bottom: 1px solid App.$base-grey;
     width: 100%;
     height: 100%;
     z-index: 20;
@@ -102,21 +202,72 @@
   .GroupCreationMenu {
     grid-row: 2 / 3;
     grid-column: 1 / 3;
-    border-right: 1px solid App.$base-orange;
+    border-right: 1px solid App.$base-grey;
     display: flex;
+    align-items: center;
+
     flex-direction: column;
     width: 100%;
     height: 100%;
     form {
       display: flex;
       flex-direction: column;
+      place-content: center;
       height: 50%;
+      width: 80%;
       input {
-        border-bottom: 1px solid App.$base-orange;
-        border-top: 1px solid App.$base-orange;
+        height: 2rem;
+        position: relative;
+        width: 100%;
+        padding-bottom: 0;
+        transition: 0.3s ease;
+        background: transparent;
+        z-index: 10;
 
-        width: 99%;
-        padding: none;
+
+      }
+      .inputWrapper{
+        position: relative;
+        height: 2.4rem;
+
+      }
+      .inputWrapper::after{
+        content: '';
+        display: block;
+        border-bottom: 1px solid App.$base-grey;
+        border-right: 1px solid App.$base-grey;
+        height: 0;
+        width: 50%;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        -webkit-transition: 1s ease;
+        transition: 1s ease;
+      }
+      .inputWrapper:hover::after{
+        content: '';
+        width: 101%;
+        height: 50%;
+      }
+      .inputWrapper::before{
+        content: '';
+        display: block;
+        border-left: 1px solid App.$base-grey;
+        height: 0;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        -webkit-transition: height 1s ease;
+        transition: height 1s ease;
+      }
+      .inputWrapper:hover::before{
+        content: '';
+        height: 50%;
+      }
+      :focus-visible{
+        outline: none;
+        //background-color: transparentize(App.$base-red, 0.7);
+
       }
     }
   }

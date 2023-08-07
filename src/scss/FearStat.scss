@@ -6,17 +6,21 @@
 }
 
 .Board {
-    width: 45vw;
+    width: 100%;
+    margin-top: 10px;
     height: max-content;
-    background-color: App.$base-black;
+    min-height: 40rem;
+    max-height: 70%;
+    background: radial-gradient(circle, App.$base-black, rgba(252,70,107,0));
     display: flex;
+    overflow: scroll;
 }
 
 @media (max-width: App.$mobile) {
     .Board {
         width: 40vh;
         height: 50vh;
-        background-color: App.$base-black;
+        background: radial-gradient(circle, App.$base-black, rgba(252,70,107,0));
         display: flex;
         flex-wrap: wrap;
         overflow: scroll;

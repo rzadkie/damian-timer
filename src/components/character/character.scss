@@ -1,8 +1,25 @@
 @use '../../scss/App.scss';
+.CharacterGM{
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    place-content: center;
+}
+    .Avatar{
+        height: 2rem;
+        width: 2rem;
+        border: solid 1px #fafafa;  
+        justify-self: flex-start;
+        margin-right: 5px;
+    }
 
+    .Link{
+    }
 a{
     color: white;
     text-decoration: none;
+    align-self: center;
+
     // text-align: center;
     // font-size:36px;
     // margin: 15px 5px 15px 0px;

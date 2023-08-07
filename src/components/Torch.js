@@ -1,12 +1,9 @@
 import React, {useEffect, Suspense} from "react";
-import { ReactComponent as Frame} from '..//dmnopy.svg';
+import { ReactComponent as Frame} from '..//frame.svg';
 import { Canvas, extend, useFrame, useLoader } from "@react-three/fiber";
-import Cylinder3d from "./test";
 import * as THREE from 'three'
-
 import glsl from 'babel-plugin-glsl/macro'
 import { useLayoutEffect, useRef } from 'react'
-import { ReactComponent as Handle} from '..//torch.svg';
 import '../scss/Torch.scss';
 
 

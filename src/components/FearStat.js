@@ -63,6 +63,24 @@ const FearStat = ({diff, difficulty, groups, selectedCharacters, getScope}) =>{
                     stress: stress,
                     group: scope,
                     avatar_url: avatarUrl ? avatarUrl : null,
+                    effects: {
+                        xqx: {
+                        state: true,
+                        duration: Date.now()
+                        },
+                        cock: false,
+                        elektrostatyczny_pizdnik: true,
+                        cock_effects: {
+                            cock: false,
+                            elektrostatyczny_pizdnik: true,
+
+                        },
+                        xqx_effects: {
+                            xqx_cock: false,
+                            elektrostatyczny_pizdnik: true,
+
+                        }
+                    }
                 });
                 setCharacterName('');
                 setStress('');
